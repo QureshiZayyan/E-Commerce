@@ -1,0 +1,43 @@
+import { useEffect, useState } from "react";
+import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
+
+const UserProfile = () => {
+    const navigate = useNavigate();
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const currentUser = auth.currentUser;
+        if (currentUser) {
+            setUser(currentUser);
+        } else {
+            navigate("/login");
+        }
+    }, [navigate]);
+
+    const handleLogout = async () => {
+        await auth.signOut();
+        navigate("/login");
+    };
+
+    return (
+        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+            <h2 className="text-2xl font-bold">Welcome to the Dashboard</h2>
+            {user ? (
+                <>
+                    <p>Your Email: {user.email}</p>
+                    <button
+                        className="mt-4 px-6 py-2 bg-red-500 text-white rounded-lg"
+                        onClick={handleLogout}
+                    >
+                        Logout
+                    </button>
+                </>
+            ) : (
+                <p>Loading...</p>
+            )}
+        </div>
+    );
+};
+
+export default UserProfile;

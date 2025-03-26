@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  letter-spacing: 0.7px;
+  /* background-color: rgb(240, 239, 239); */
+}
+
+img {
+  /* mix-blend-mode: multiply; */
+}
+
+/* Hide scrollbar for all elements */
+* {
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* Internet Explorer 11 */
+}
+
+/* Hide scrollbar for WebKit browsers (Chrome, Edge, Safari) */
+*::-webkit-scrollbar {
+  display: none;
+}
+
+img {
+  filter: brightness(1) contrast(1.5);
+}
