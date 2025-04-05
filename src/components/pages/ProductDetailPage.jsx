@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { useParams } from 'react-router-dom';
-import { StateContext } from './StateProvider';
 import { MdCurrencyRupee } from "react-icons/md";
 import { MdStarRate } from "react-icons/md";
-import Button from './Button';
+import Button from '../layout/Button';
+import { StateContext } from '../states/StateProvider';
 
 const ProductDetailPage = () => {
 

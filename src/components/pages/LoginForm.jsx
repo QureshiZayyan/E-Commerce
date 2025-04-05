@@ -1,15 +1,14 @@
-import { useState} from "react";
-import { auth } from "../firebase";
+import { useState } from "react";
 import {
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword
 } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { updateProfile } from "firebase/auth";
-import Input from "./Input";
+import Input from "../layout/Input";
+import { auth } from "../../firebase";
 
 const LoginForm = () => {
-    // const {} = useContext(StateContext);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
@@ -40,7 +39,6 @@ const LoginForm = () => {
             setIsLoading(false);
         }
     };
-
 
     return (
         <div className="flex items-center justify-center min-h-screen mt-14 mb-14">

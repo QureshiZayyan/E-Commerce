@@ -1,11 +1,11 @@
 import './App.css'
-import Navbar from './components/Navbar'
-import ProductList from './components/ProductList'
-import ProductDetailPage from './components/ProductDetailPage';
-import LoginForm from './components/LoginForm';
+import Navbar from './components/layout/Navbar'
+import ProductList from './components/pages/ProductList'
+import ProductDetailPage from './components//pages/ProductDetailPage';
+import LoginForm from './components/pages/LoginForm';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import UserProfile from './components/UserProfile';
-import Cart from './components/Cart';
+import UserProfile from './components/pages/UserProfile';
+import Cart from './components/pages/Cart';
 
 export const App = () => {
   return (

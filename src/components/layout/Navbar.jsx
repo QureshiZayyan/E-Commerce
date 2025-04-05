@@ -2,8 +2,8 @@ import { ShoppingCart } from "lucide-react";
 import { useState, useContext } from "react";
 import { FaSearch } from "react-icons/fa";
 import { NavLink } from 'react-router-dom'
-import { StateContext } from "./StateProvider";
-import { auth } from "../firebase";
+import { StateContext } from "../states/StateProvider"
+import { auth } from "../../firebase";
 
 const Navbar = () => {
     const { user } = useContext(StateContext);
