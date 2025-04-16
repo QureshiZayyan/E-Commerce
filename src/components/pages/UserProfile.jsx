@@ -6,11 +6,12 @@ import { signOut } from "firebase/auth";
 
 const UserProfile = () => {
     const navigate = useNavigate();
-    const { user } = useContext(StateContext);
+    const { user, setCart } = useContext(StateContext);
 
     const handleLogout = async () => {
         try {
             await signOut(auth);
+            setCart([]);
             navigate('/');
         } catch (error) {
             console.error("Error logging out:", error);

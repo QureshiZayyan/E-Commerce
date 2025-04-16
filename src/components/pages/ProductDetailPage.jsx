@@ -7,9 +7,10 @@ import { StateContext } from '../states/StateProvider';
 
 const ProductDetailPage = () => {
 
-    const { products } = useContext(StateContext);
+    const { products, addToCart } = useContext(StateContext);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const { id } = useParams();
+
 
     useEffect(() => {
         if (products) {
@@ -53,7 +54,7 @@ const ProductDetailPage = () => {
 
                     <div className="flex items-center my-8 gap-3">
                         {/* <p className="text-lg font-semibold text-green-700">In Stock</p> */}
-                        <Button />
+                        <Button addToCart={() => addToCart(selectedProduct)} />
                     </div>
                 </div>
             </div>

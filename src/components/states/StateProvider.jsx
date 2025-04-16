@@ -6,7 +6,12 @@ const StateContext = createContext();
 
 function StateProvider({ children }) {
     const [products, setProducts] = useState([]);
+    const [cart, setCart] = useState([]);
     const [user, setUser] = useState(null);
+
+    const addToCart = (product) => {
+        setCart([...cart, product]);
+    };
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (CurrentUser) => {
@@ -17,7 +22,9 @@ function StateProvider({ children }) {
     }, []);
 
     return (
-        <StateContext.Provider value={{ setProducts, products, user, setUser }}>
+        <StateContext.Provider value={{
+            setProducts, products, user, setUser, cart, setCart, addToCart
+        }}>
             {children}
         </StateContext.Provider>
     );

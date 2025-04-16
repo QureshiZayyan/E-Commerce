@@ -6,7 +6,7 @@ import Button from "../layout/Button";
 import { StateContext } from "../states/StateProvider";
 
 const ProductList = () => {
-  const { products, setProducts } = useContext(StateContext);
+  const { products, setProducts, addToCart, cart } = useContext(StateContext);
 
   const truncateText = (text, maxLength) => {
     if (text.length <= maxLength) return text;
@@ -45,7 +45,10 @@ const ProductList = () => {
                   <p className="my-3 flex items-center"><MdCurrencyRupee />{product.price}</p>
                 </div>
                 <div className="flex items-center gap-2 absolute bottom-[12.5px]">
-                  <Button />
+                  <Button addToCart={() => {
+                    if (cart.find(item => item.id === product.id)) return;
+                    addToCart(product)
+                  }} />
                 </div>
               </div>
             </Link>
