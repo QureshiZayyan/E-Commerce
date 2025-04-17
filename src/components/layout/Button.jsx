@@ -1,16 +1,15 @@
-import React, { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
-import { StateContext } from "../states/StateProvider";
+import { useContext } from "react"
+import { StateContext } from "../states/StateProvider"
 
 const Button = ({ addToCart }) => {
 
+
     return (
         <>
-            <NavLink to='/cart'>
-                <button onClick={addToCart} className="bg-black text-white py-1 px-[10px] rounded-2xl"
-                >Add to Cart</button></NavLink>
+            <button onClick={addToCart} className="text-[14px] bg-black text-white py-1 px-[9px] rounded-2xl"
+            >Add to Cart</button>
             <button
-                className="bg-[#172554] text-white py-1 px-[10px] rounded-2xl"
+                className="text-[14px] bg-[#172554] text-white py-1 px-[9px] rounded-2xl"
             >Buy Now</button>
         </>
     )

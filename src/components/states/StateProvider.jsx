@@ -10,6 +10,8 @@ function StateProvider({ children }) {
     const [user, setUser] = useState(null);
 
     const addToCart = (product) => {
+        const check = cart.some(item => item.id === product.id)
+        if (check) return;
         setCart([...cart, product]);
     };
 
