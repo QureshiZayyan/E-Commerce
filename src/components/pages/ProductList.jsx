@@ -2,8 +2,8 @@ import { useEffect, useContext } from "react";
 import { MdStarRate } from "react-icons/md";
 import { MdCurrencyRupee } from "react-icons/md";
 import { Link } from "react-router-dom";
-import Button from "../layout/Button";
 import { StateContext } from "../states/StateProvider";
+import Button from "../layout/Button";
 
 const ProductList = () => {
   const { products, setProducts, addToCart } = useContext(StateContext);
@@ -50,7 +50,7 @@ const ProductList = () => {
             </div>
 
             <div className="flex items-center gap-2 absolute bottom-[12.5px] px-[9px]">
-              <Button addToCart={() => addToCart(product)} />
+              <Button addToCart={() => addToCart(product)} product={product} />
             </div>
           </div>
         ))}

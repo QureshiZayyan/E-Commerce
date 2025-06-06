@@ -1,18 +1,20 @@
-import { useContext } from "react"
-import { StateContext } from "../states/StateProvider"
+import { Link } from "react-router-dom"
 
-const Button = ({ addToCart }) => {
-
+const Button = ({ addToCart, product }) => {
 
     return (
         <>
-            <button onClick={addToCart} className="text-[14px] bg-black text-white py-1 px-[9px] rounded-2xl"
+            <button onClick={addToCart} className="text-[13px] bg-black text-white py-[6px] px-[10.2px] rounded-2xl"
             >Add to Cart</button>
-            <button
-                className="text-[14px] bg-[#172554] text-white py-1 px-[9px] rounded-2xl"
-            >Buy Now</button>
+            <Link to={`/item/${product.id}`}>
+                <button
+                    className="text-[13px] bg-[#172554] text-white py-[6px] px-[10.2px] rounded-2xl">
+                    Buy Now
+                </button>
+            </Link>
         </>
     )
+
 }
 
 export default Button

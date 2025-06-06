@@ -1,11 +1,15 @@
 import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar'
 import ProductList from './components/pages/ProductList'
 import ProductDetailPage from './components//pages/ProductDetailPage';
 import LoginForm from './components/pages/LoginForm';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import UserProfile from './components/pages/UserProfile';
 import Cart from './components/pages/Cart';
+import CheckoutPage from './components/pages/CheckoutPage';
+import Address from "./components/pages/Address";
+import OrderPage from "./components/pages/OrderPage";
+import Footer from './components/layout/Footer';
 
 export const App = () => {
   return (
@@ -18,7 +22,12 @@ export const App = () => {
           <Route path="/product/:id" element={<ProductDetailPage />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/userprofile" element={<UserProfile />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/address" element={<Address />} />
+          <Route path="/orders" element={<OrderPage />} />
+          <Route path="/item/:id" element={<CheckoutPage />} />
         </Routes>
+        {/* <Footer /> */}
       </Router>
     </>
   )

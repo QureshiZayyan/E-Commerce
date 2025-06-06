@@ -11,7 +11,6 @@ const ProductDetailPage = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const { id } = useParams();
 
-
     useEffect(() => {
         if (products) {
             const foundProduct = products.find((item) => item.id === parseInt(id));
@@ -54,7 +53,7 @@ const ProductDetailPage = () => {
 
                     <div className="flex items-center my-8 gap-3">
                         {/* <p className="text-lg font-semibold text-green-700">In Stock</p> */}
-                        <Button addToCart={() => addToCart(selectedProduct)} />
+                        <Button addToCart={() => addToCart(selectedProduct)} product={selectedProduct} />
                     </div>
                 </div>
             </div>
