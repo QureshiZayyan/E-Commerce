@@ -14,14 +14,14 @@ const Navbar = () => {
             {/* Logo */}
             <NavLink to='/'><div className="text-xl font-bold text-white">ShopKart</div></NavLink>
 
-            <div className="flex items-center bg-white rounded-2xl">
+            {/* <div className="flex items-center bg-white rounded-2xl">
                 <input
                     type="text"
                     placeholder="Search..."
                     className="px-3 py-[3.5px] w-96 outline-none rounded-2xl font-medium"
                 />
                 <FaSearch className="text-black cursor-pointer relative right-3" />
-            </div>
+            </div> */}
 
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-6 relative">

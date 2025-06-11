@@ -20,7 +20,7 @@ const UserProfile = () => {
 
     return (
         <>
-            <div className="my-[62px]">
+            <div className="mt-[62px] mb-[75px]">
                 {/* <h2 className="text-2xl font-bold">Welcome {user.email}</h2> */}
                 <h2 className="text-2xl font-bold mx-10 mb-5text-cente mb-10 text-center">👋 Hello {user ? user.displayName : 'User'} !</h2>
 

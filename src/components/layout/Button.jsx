@@ -8,7 +8,7 @@ const Button = ({ addToCart, product }) => {
             >Add to Cart</button>
             <Link to={`/item/${product.id}`}>
                 <button
-                    className="text-[13px] bg-[#172554] text-white py-[6px] px-[10.2px] rounded-2xl">
+                    className="text-[13px] mx-2 bg-[#172554] text-white py-[6px] px-[10.2px] rounded-2xl">
                     Buy Now
                 </button>
             </Link>

@@ -41,7 +41,7 @@ const LoginForm = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen mt-14 mb-14">
+        <div className="flex items-center justify-center min-h-screen mt-4 mb-14">
             <div className="bg-black p-8 rounded-2xl shadow-lg w-96">
                 <h2 className="text-2xl font-bold text-white text-center">
                     {isSignUp ? "Sign Up" : "Sign In"}

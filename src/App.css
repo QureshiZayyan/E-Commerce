@@ -6,8 +6,8 @@
 body {
   font-family: 'Poppins', sans-serif;
   letter-spacing: 0.7px;
-  /* background-color: rgb(240, 239, 239); */
-   height: 100%;
+  background-color: rgb(245, 241, 241);
+  height: 100%;
 }
 
 img {
@@ -30,4 +30,3 @@ img {
 img {
   filter: brightness(1) contrast(1.5);
 }
-

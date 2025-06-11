@@ -18,7 +18,6 @@ const ProductList = () => {
       const response = await fetch(`https://fakestoreapi.com/products`);
       if (!response.ok) throw new Error('Error fetching data');
       const data = await response.json();
-      console.log(data);
       setProducts(data);
     } catch (error) {
       console.log(error);
@@ -30,14 +29,14 @@ const ProductList = () => {
   }, []);
 
   return (
-    <div id="cards-container" className="grid md:grid-cols-3 lg:grid-cols-4 md:mx-[10vw] lg:mx-[4vw] place-items-center my-10">
+    <div id="cards-container" className="grid md:grid-cols-3 lg:grid-cols-4 md:mx-[10vw] lg:mx-[4vw] my-12">
       {
         products.map((product) => (
-          <div key={product.id} id='card' className="card relative xl:w-[18vw] md:w-[28vw] lg:w-[20.3vw] my-[22px] hover:opacity-[5] shadow-xl bg-slate-200 rounded-[8px] overflow-hidden">
+          <div key={product.id} id='card' className="card relative w-[40vw] xl:w-[18vw] md:w-[28vw] lg:w-[20.3vw] my-[22px] hover:opacity-[5] shadow-md bg-slate-100 rounded-[8px]">
 
             <Link to={`/product/${product.id}`}>
               <div id="card-img">
-                <img src={product.image} alt="Article" id="newsimg" className="md:h-[130px] w-full p-[10px] rounded-[15px]" />
+                <img src={product.image} alt="Article" id="newsimg" className="md:h-[130px] w-full p-[10px] rounded-[15px]" loading="lazy" />
               </div>
               <div className="h-[198px] text-black text-sm px-[9px] pt-[4px]">
                 <h2 id="news-desc" className="font-[595]">{truncateText(product.title, 50)}</h2>
@@ -49,7 +48,7 @@ const ProductList = () => {
               <p className="my-3 flex items-center"><MdCurrencyRupee />{product.price}</p>
             </div>
 
-            <div className="flex items-center gap-2 absolute bottom-[12.5px] px-[9px]">
+            <div className="gap-2 absolute bottom-[12.5px] px-[9px]">
               <Button addToCart={() => addToCart(product)} product={product} />
             </div>
           </div>

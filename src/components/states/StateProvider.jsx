@@ -6,22 +6,21 @@ import { query, collection, getDocs, addDoc, where, serverTimestamp } from "fire
 const StateContext = createContext();
 
 function StateProvider({ children }) {
-    // const navigate = useNavigate();
+
     const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
     const [user, setUser] = useState(null);
     const [userAddress, setUserAddress] = useState([]);
-    const [orders, setOrders] = useState([]);
+    const [showOrders, setShowOrders] = useState([]);
     const [selectedItem, setSelectedItem] = useState(null);
+    const [quantity, setQuantity] = useState(1);
+    const [totalPrice, setTotalPrice] = useState(0);
 
     const placeSingleItemOrder = async (itemId) => {
-
         if (!user) {
             alert("Please login to place order.");
             return;
         }
-
-        // const selectedItem = cart.find(item => item.id === itemId);
 
         if (!selectedItem) {
             alert("Item not found in cart.");
@@ -30,33 +29,19 @@ function StateProvider({ children }) {
 
         const orderData = {
             userId: user.uid,
-            items: [selectedItem],
-            total: selectedItem.price * selectedItem.qty,
-            createdAt: serverTimestamp(),
-            shippingAddress: {
-                // name: "Zayyan",
-                // phone: "1234567890",
-                // city: "Mumbai",
-                // pincode: "400001"
-                userAddress
-            }
+            items: selectedItem,
+            total: selectedItem.price,
+            userAddress,
         };
 
         try {
             await addDoc(collection(db, "orders"), orderData);
             alert("✅ Order placed for one item!");
-
         } catch (err) {
             console.error("Error placing order:", err);
             alert("❌ Failed to place order.");
-        } finally {
-            // navigate('/checkout')
         }
     };
-
-    // useEffect(() => {
-    //     placeSingleItemOrder();
-    // }, []);
 
     useEffect(() => {
         const saved = localStorage.getItem("cartItems");
@@ -79,7 +64,6 @@ function StateProvider({ children }) {
         return () => unsubscribe();
     }, []);
 
-    // Add to cart function
     const addToCart = (product) => {
         const check = cart.some(item => item.id === product.id);
         if (check) return;
@@ -93,47 +77,45 @@ function StateProvider({ children }) {
             collection(db, "addresses"),
             where("userId", "==", user.uid));
 
-        const querySnapshot = await getDocs(q);
-        const UserData = querySnapshot.docs.map(doc => ({
+        const response = await getDocs(q);
+        const UserData = response.docs.map(doc => ({
             id: doc.id,
             ...doc.data()
         }));
         setUserAddress(UserData);
-        console.log(UserData);
     };
 
-    useEffect(() => {
-        if (user?.uid) {
-            FetchData();
-        }
-    }, [user]);
-
-
-    const FetchOrderData = async () => {
+    const FetchUserOrders = async () => {
         const q = query(
-            collection(db, "addresses"),
+            collection(db, "orders"),
             where("userId", "==", user.uid));
 
-        const querySnapshot = await getDocs(q);
-        const UserData = querySnapshot.docs.map(doc => ({
+        const response = await getDocs(q);
+        const Orders = response.docs.map(doc => ({
             id: doc.id,
             ...doc.data()
         }));
-        setOrders(UserData);
-        // console.log(UserData);
+        setShowOrders(Orders);
+        console.log(Orders);
     };
 
     useEffect(() => {
-        if (user?.uid) {
-            FetchOrderData();
-        }
+        const fetchDataAndOrders = async () => {
+            if (user?.uid) {
+                await FetchData();
+                await FetchUserOrders();
+            }
+        };
+
+        fetchDataAndOrders();
     }, [user]);
+
 
 
     return (
         <StateContext.Provider value={{
             FetchData, setProducts, products, user, setUser, cart, setCart, addToCart, userAddress, setUserAddress,
-            placeSingleItemOrder, setOrders, orders, selectedItem, setSelectedItem
+            placeSingleItemOrder, showOrders, setShowOrders, selectedItem, setSelectedItem, setQuantity, quantity, setTotalPrice, totalPrice
         }}>
             {children}
         </StateContext.Provider>
