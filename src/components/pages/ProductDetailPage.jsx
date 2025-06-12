@@ -35,11 +35,12 @@ const ProductDetailPage = () => {
     return (
         <>
             <div className="p-16 flex justify-center md:flex-row gap-12">
-                <div className='w-[38vw]'>
+                <div className='w-[30vw]'>
                     <img
                         src={selectedProduct.image}
                         alt="Product"
-                        className="rounded-lg w-full h-[50vh] mix-blend-multiply"
+                        className="rounded-lg w-full h-[260px]"
+                        loading='lazy'
                     />
                 </div>
 

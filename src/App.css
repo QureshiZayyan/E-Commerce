@@ -6,12 +6,12 @@
 body {
   font-family: 'Poppins', sans-serif;
   letter-spacing: 0.7px;
-  background-color: rgb(245, 241, 241);
+  background-color: rgb(241, 236, 236);
   height: 100%;
 }
 
 img {
-  /* mix-blend-mode: multiply; */
+  mix-blend-mode: multiply;
 }
 
 /* Hide scrollbar for all elements */
@@ -29,4 +29,23 @@ img {
 
 img {
   filter: brightness(1) contrast(1.5);
+}
+
+@media(width<=767px) {
+
+  #productCard {
+    width: 48vw;
+  }
+
+  #productCard-Container {
+    margin: 40px 5px !important;
+    /* background-color: red; */
+  }
+}
+
+@media(width<=420px) {
+
+  #productCard {
+    height: 420px;
+  }
 }

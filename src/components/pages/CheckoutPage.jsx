@@ -33,6 +33,7 @@ const CheckoutPage = () => {
                         src={selectedItem.image}
                         alt="Product"
                         className="w-[20vw] h-[40vh]"
+                        loading="lazy"
                     />
                     <div>
                         <h2 className="text-lg font-semibold mb-2">{selectedItem.title}</h2>

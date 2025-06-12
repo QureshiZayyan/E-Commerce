@@ -4,11 +4,11 @@ const Button = ({ addToCart, product }) => {
 
     return (
         <>
-            <button onClick={addToCart} className="text-[13px] bg-black text-white py-[6px] px-[10.2px] rounded-2xl"
+            <button onClick={addToCart} className="font-semibold text-[13px] bg-[#172554] text-white py-[9px] px-[10.2px] rounded-2xl"
             >Add to Cart</button>
             <Link to={`/item/${product.id}`}>
                 <button
-                    className="text-[13px] mx-2 bg-[#172554] text-white py-[6px] px-[10.2px] rounded-2xl">
+                    className="text-[13px] bg-black font-semibold text-white py-[9px] px-[10.2px] rounded-2xl">
                     Buy Now
                 </button>
             </Link>

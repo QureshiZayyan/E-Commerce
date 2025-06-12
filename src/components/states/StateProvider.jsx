@@ -45,15 +45,20 @@ function StateProvider({ children }) {
 
     useEffect(() => {
         const saved = localStorage.getItem("cartItems");
-        if (saved) {
+        // if (saved) {
             setCart(JSON.parse(saved));
-        }
+        // }
     }, []);
 
+    // useEffect(() => {
+    //     localStorage.removeItem('cartItems');
+    //     setCart([])
+    // }, []);
+
     useEffect(() => {
-        if (cart.length > 0) {
-            localStorage.setItem("cartItems", JSON.stringify(cart));
-        }
+        // if (cart.length > 0) {
+        localStorage.setItem("cartItems", JSON.stringify(cart));
+        // }
     }, [cart]);
 
     useEffect(() => {

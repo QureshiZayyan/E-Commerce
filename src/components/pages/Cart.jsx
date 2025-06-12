@@ -3,7 +3,6 @@ import { StateContext } from '../states/StateProvider'
 import { MdCurrencyRupee } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
-
 const Cart = () => {
 
   const { cart } = useContext(StateContext);
@@ -24,6 +23,7 @@ const Cart = () => {
                       src={item.image}
                       alt="Product"
                       className="w-[20vw] h-[40vh]"
+                      loading="lazy"
                     />
                     <div>
                       <h2 className="text-lg font-semibold">{item.title}</h2>
