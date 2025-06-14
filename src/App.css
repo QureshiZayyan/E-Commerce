@@ -6,7 +6,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   letter-spacing: 0.7px;
-  background-color: rgb(241, 236, 236);
+  background-color: rgb(240, 236, 236);
   height: 100%;
 }
 
@@ -34,18 +34,76 @@ img {
 @media(width<=767px) {
 
   #productCard {
-    width: 48vw;
+    width: 46vw;
   }
 
   #productCard-Container {
     margin: 40px 5px !important;
     /* background-color: red; */
   }
+
+  #Product-Detail-Page {
+    flex-direction: column;
+    /* padding: 20px 40px; */
+    align-items: center;
+  }
+
+  #Product-Detail-Page div {
+    width: 85vw;
+  }
+
+  nav {
+    padding: 12px 12px !important;
+  }
+
+  #cart {
+    width: 90vw !important;
+    /* margin:auto !important; */
+  }
+
+  #cart li {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  li img {
+    width: 45vw !important;
+    height: 180px !important;
+    aspect-ratio: 1/1;
+  }
+
+  #cart-container {
+    padding: 0;
+    margin: 50px 0;
+  }
+
+  #UserPorfile {
+    flex-direction: column !important;
+    align-items: center;
+  }
+
+  #Address {
+    margin-bottom: 20px !important;
+  }
+
+  #Checkout {
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+  }
+
+  #Checkout-Container {
+    padding: 20px 16px 38px 16px !important;
+    width: 90vw !important;
+    margin: 25px auto;
+    padding: 6px 15px;
+
+  }
 }
 
 @media(width<=420px) {
 
   #productCard {
-    height: 420px;
+    height: 400px;
   }
 }

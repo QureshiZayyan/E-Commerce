@@ -26,9 +26,9 @@ const CheckoutPage = () => {
     }
 
     return (
-        <div className="my-14 mx-14">
+        <div id='Checkout-Container' className="mt-10 mb-16 py-8 mx-14 bg-white rounded-lg px-10 shadow-md">
             <ul>
-                <li key={selectedItem.id} className="flex pt-4 pb-8 border-b border-[#172554] gap-9 mb-9">
+                <li id='Checkout' key={selectedItem.id} className="flex pt-4 pb-8 border-b border-[#172554] gap-14 mb-9">
                     <img
                         src={selectedItem.image}
                         alt="Product"

@@ -9,8 +9,8 @@ const Cart = () => {
 
   return (
     <>
-      <div className="min-h-screen pt-16 pb-24 px-14">
-        <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
+      <div id='cart-container' className="min-h-screen pt-16 pb-24 px-14">
+        <div id='cart' className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
           <h1 className="text-2xl font-bold mb-4">Shopping Cart</h1>
           <ul>
             {
@@ -41,7 +41,6 @@ const Cart = () => {
                       </Link>
                     </div>
                   </li>))}
-
           </ul>
         </div>
       </div>

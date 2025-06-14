@@ -22,11 +22,10 @@ const UserProfile = () => {
         <>
             <div className="mt-[62px] mb-[75px]">
                 {/* <h2 className="text-2xl font-bold">Welcome {user.email}</h2> */}
-                <h2 className="text-2xl font-bold mx-10 mb-5text-cente mb-10 text-center">👋 Hello {user ? user.displayName : 'User'} !</h2>
+                <h2 className="text-2xl font-bold mx-10 mb-10 text-center">👋 Hello {user ? user.displayName : 'User'} !</h2>
 
-                <div className="flex justify-center gap-4">
-
-                    <div>
+                <div id="UserPorfile" className="flex justify-center gap-4">
+                    <div id="Address">
                         {
                             userAddress.map((res) => (
                                 <ul key={res.id} className="rounded-[8px] py-4 pr-7 pl-3 border-2 border-black w-[230px]">
@@ -40,7 +39,6 @@ const UserProfile = () => {
                                 </ul>
                             ))
                         }
-
                     </div>
                     <div className="font-bold">
                         <button className="w-[124px] mb-[19px] px-2 py-4 block bg-blue-950 rounded-lg text-white"><NavLink to={'/orders'}>Your Orders</NavLink></button>

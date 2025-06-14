@@ -28,11 +28,14 @@ const ProductList = () => {
   }, []);
 
   return (
-    <div id="productCard-Container" className="grid mx-14 place-items-center grid-cols-2 sm:grid-cols-2 md:grid-cols-3 my-10">
+    <div id="productCard-Container" className="grid mx-7 place-items-center grid-cols-2 sm:grid-cols-2 md:grid-cols-4 my-10">
       {products.map((product) => (
-        <Link to={`product/${product.id}`} key={product.id} >
-          <div id="productCard"
-            className="bg-white mb-10 relative w-[26vw] h-[370px] px-4 py-3 rounded-xl shadow-md flex flex-col">
+        <div
+          key={product.id}
+          id="productCard"
+          className="bg-white mb-10 relative w-[22vw] h-[370px] px-4 py-3 rounded-xl shadow-md flex flex-col"
+        >
+          <Link to={`product/${product.id}`}>
             <img
               loading="lazy"
               src={product.image}
@@ -40,20 +43,34 @@ const ProductList = () => {
               className="w-[200px] mx-auto h-40 mb-4"
             />
             <h2 className="text-base font-semibold">
-              {truncateText(product.title, 40)}
+              {truncateText(product.title, 24)}
             </h2>
-            <div className="absolute bottom-[20px]">
-              <p className="text-yellow-500 mb-2"><MdStarRate className="mr-1 inline" color="#EAB308" />{product.rating?.rate}</p>
-              <p className="font-semibold mb-4"><MdCurrencyRupee className="inline" />{product.price}</p>
-              <button onClick={() => addToCart(product)}
-                className="text-[13px] bg-[#172554] text-white font-semibold py-[6px] px-[10.2px] rounded-2xl">
-                Add to Cart
-              </button>
-            </div>
+          </Link>
+
+          {/* Bottom Content Container */}
+          <div className="absolute bottom-[20px] left-4">
+            <Link to={`product/${product.id}`}>
+              <p className="text-yellow-500 mb-2">
+                <MdStarRate className="mr-1 inline" color="#EAB308" />
+                {product.rating?.rate}
+              </p>
+              <p className="font-semibold mb-4">
+                <MdCurrencyRupee className="inline" />
+                {product.price}
+              </p>
+            </Link>
+
+            <button
+              onClick={() => addToCart(product)}
+              className="text-[13px] bg-[#172554] text-white font-semibold py-[6px] px-[10.2px] rounded-2xl"
+            >
+              Add to Cart
+            </button>
           </div>
-        </Link>
+        </div>
       ))}
     </div>
+
   );
 };
 
