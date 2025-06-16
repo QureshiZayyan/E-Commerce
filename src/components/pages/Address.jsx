@@ -50,7 +50,7 @@ const Address = () => {
 
     return (
         <div className="flex items-center justify-center my-12">
-            <div
+            <div id='AddressForm'
                 className="transition-all duration-500 transform scale-100 opacity-100 bg-slate-200 shadow-xl rounded-2xl p-6 w-[35vw]"
             >
                 <h2 className="text-xl font-semibold mb-4">Address</h2>

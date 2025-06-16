@@ -7,7 +7,7 @@ import { StateContext } from '../states/StateProvider';
 
 const ProductDetailPage = () => {
 
-    const { products, addToCart, selectedItem, quantity, setQuantity, totalPrice, setTotalPrice } = useContext(StateContext);
+    const { products, addToCart, quantity, setQuantity, setTotalPrice } = useContext(StateContext);
     const [selectedProduct, setSelectedProduct] = useState([]);
     const { id } = useParams();
 
@@ -35,7 +35,7 @@ const ProductDetailPage = () => {
     return (
         <>
             <div id="Product-Detail-Page" className="p-16 flex justify-center md:flex-row gap-12">
-                <div className='w-[30vw]'>
+                <div id='img' className='w-[30vw]'>
                     <img
                         src={selectedProduct.image}
                         alt="Product"
@@ -44,13 +44,13 @@ const ProductDetailPage = () => {
                     />
                 </div>
 
-                <div className="w-[50vw]">
+                <div id='product-content' className="w-[50vw]">
                     <h1 className="text-2xl font-bold mb-4">{selectedProduct.title}</h1>
-                    <p className="text-black mb-4">
+                    <p className="text-black mb-4 text-[16px]">
                         {selectedProduct.description}
                     </p>
                     {/* <p className="my-3 flex"><MdStarRate className='mr-[2px]' size={18} />{selectedProduct.rating.rate}</p> */}
-                    <p className="text-2xl flex items-center"><MdCurrencyRupee />{selectedProduct.price}</p>
+                    <p className="text-2xl font-semibold flex items-center"><MdCurrencyRupee />{selectedProduct.price}</p>
 
                     <div className="flex items-center gap-4 mt-4">
                         <select className='bg-slate-200 py-2 w-[50px] px-1 rounded-md' value={quantity} onChange={handleQuantityChange}>

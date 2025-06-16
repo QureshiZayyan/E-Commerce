@@ -26,7 +26,8 @@ const CheckoutPage = () => {
     }
 
     return (
-        <div id='Checkout-Container' className="mt-10 mb-16 py-8 mx-14 bg-white rounded-lg px-10 shadow-md">
+        <div id='Checkout-Container' className="mt-10 mb-16 mx-auto py-8 w-[80vw] bg-white rounded-lg px-10 shadow-md">
+            <h1 className='text-2xl font-semibold mb-10 text-center text-[#172554]'>Confirm Your Order</h1>
             <ul>
                 <li id='Checkout' key={selectedItem.id} className="flex pt-4 pb-8 border-b border-[#172554] gap-14 mb-9">
                     <img
@@ -36,9 +37,9 @@ const CheckoutPage = () => {
                         loading="lazy"
                     />
                     <div>
-                        <h2 className="text-lg font-semibold mb-2">{selectedItem.title}</h2>
-                        <p className="flex items-center text-[20.5px] text-black">
-                            Subtotal ({quantity} Items):  <MdCurrencyRupee />{totalPrice.toFixed(2)}
+                        <h2 className="text-[19.5px] font-semibold mb-2">{selectedItem.title}</h2>
+                        <p className="flex items-center text-[19.5px] text-black">
+                            Subtotal ({quantity} Quantity):  <MdCurrencyRupee /><span className='font-semibold'>{totalPrice.toFixed(2)}</span>
                         </p>
                         <button
                             onClick={() => placeSingleItemOrder(selectedItem)}
@@ -64,7 +65,7 @@ const CheckoutPage = () => {
                     </ul>
                 ))}
             </div>
-        </div>
+        </div >
     );
 };
 

@@ -2,6 +2,7 @@ import { useState, createContext, useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth, db } from "../../firebase";
 import { query, collection, getDocs, addDoc, where, serverTimestamp } from "firebase/firestore";
+import { toast, Zoom } from 'react-toastify';
 
 const StateContext = createContext();
 
@@ -16,16 +17,25 @@ function StateProvider({ children }) {
     const [quantity, setQuantity] = useState(1);
     const [totalPrice, setTotalPrice] = useState(0);
 
-    const placeSingleItemOrder = async (itemId) => {
-        if (!user) {
-            alert("Please login to place order.");
-            return;
-        }
+    const truncateText = (text, maxLength) => {
+        if (text.length <= maxLength) return text;
+        return text.substring(0, maxLength) + "...";
+    };
 
-        if (!selectedItem) {
-            alert("Item not found in cart.");
-            return;
-        }
+    const placeSingleItemOrder = async (itemId) => {
+        // if (!user) {
+        //     toast.info("Please log in to place the order.", {
+        //         position: "top-center",
+        //         autoClose: 2000,
+        //         theme: "colored"
+        //     });
+        //     return
+        // }
+
+        // if (!selectedItem) {
+        //     alert("Item not found in cart.");
+        //     return;
+        // }
 
         const orderData = {
             userId: user.uid,
@@ -36,7 +46,15 @@ function StateProvider({ children }) {
 
         try {
             await addDoc(collection(db, "orders"), orderData);
-            alert("✅ Order placed for one item!");
+            toast.success("Order Placed", {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: true,
+                theme: 'light',
+                closeOnClick: true,
+                transition: Zoom,
+                Limit: 1,
+            });
         } catch (err) {
             console.error("Error placing order:", err);
             alert("❌ Failed to place order.");
@@ -46,14 +64,9 @@ function StateProvider({ children }) {
     useEffect(() => {
         const saved = localStorage.getItem("cartItems");
         // if (saved) {
-            setCart(JSON.parse(saved));
+        setCart(JSON.parse(saved));
         // }
     }, []);
-
-    // useEffect(() => {
-    //     localStorage.removeItem('cartItems');
-    //     setCart([])
-    // }, []);
 
     useEffect(() => {
         // if (cart.length > 0) {
@@ -120,7 +133,8 @@ function StateProvider({ children }) {
     return (
         <StateContext.Provider value={{
             FetchData, setProducts, products, user, setUser, cart, setCart, addToCart, userAddress, setUserAddress,
-            placeSingleItemOrder, showOrders, setShowOrders, selectedItem, setSelectedItem, setQuantity, quantity, setTotalPrice, totalPrice
+            placeSingleItemOrder, showOrders, setShowOrders, selectedItem, setSelectedItem, setQuantity, quantity, setTotalPrice, totalPrice,
+            truncateText
         }}>
             {children}
         </StateContext.Provider>

@@ -10,6 +10,8 @@ import CheckoutPage from './components/pages/CheckoutPage';
 import Address from "./components/pages/Address";
 import OrderPage from "./components/pages/OrderPage";
 import Footer from './components/layout/Footer'
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 export const App = () => {
   return (
@@ -28,6 +30,7 @@ export const App = () => {
         </Routes>
         <Footer />
       </Router>
+      <ToastContainer />
     </>
   )
 }

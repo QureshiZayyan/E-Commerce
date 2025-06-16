@@ -30,7 +30,6 @@ const LoginForm = () => {
                 alert("User Registered!");
             } else {
                 await signInWithEmailAndPassword(auth, email, password);
-                alert("Logged In Successfully!");
             }
             navigate('/')
         } catch (error) {
@@ -41,8 +40,8 @@ const LoginForm = () => {
     };
 
     return (
-        <div className="flex items-center justify-center min-h-screen mt-4 mb-14">
-            <div className="bg-black p-8 rounded-2xl shadow-lg w-96">
+        <div className="flex items-center justify-center mt-11 mb-14">
+            <div id="form" className="bg-black p-8 rounded-2xl shadow-lg w-96">
                 <h2 className="text-2xl font-bold text-white text-center">
                     {isSignUp ? "Sign Up" : "Sign In"}
                 </h2>
