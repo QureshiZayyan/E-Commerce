@@ -51,58 +51,58 @@ const Address = () => {
     return (
         <div className="flex items-center justify-center my-12">
             <div id='AddressForm'
-                className="transition-all duration-500 transform scale-100 opacity-100 bg-slate-200 shadow-xl rounded-2xl p-6 w-[35vw]"
+                className="transition-all duration-500 transform scale-100 opacity-100 bg-black shadow-xl rounded-2xl p-6 w-[35vw]"
             >
-                <h2 className="text-xl font-semibold mb-4">Address</h2>
+                <h2 className="text-xl font-semibold mb-7 text-white">Add Edit/Address</h2>
 
                 <form onSubmit={handleSubmit}>
                     <input
                         name="fullName"
                         placeholder="Full Name"
-                        className="w-full mb-2 p-2 border rounded"
+                        className="w-full mb-4 p-2 border rounded"
                         onChange={handleChange}
                         required
                     />
                     <input
                         name="street"
                         placeholder="Street"
-                        className="w-full mb-2 p-2 border rounded"
+                        className="w-full mb-4 p-2 border rounded"
                         onChange={handleChange}
                         required
                     />
                     <input
                         name="city"
                         placeholder="City"
-                        className="w-full mb-2 p-2 border rounded"
+                        className="w-full mb-4 p-2 border rounded"
                         onChange={handleChange}
                         required
                     />
                     <input
                         name="state"
                         placeholder="State"
-                        className="w-full mb-2 p-2 border rounded"
+                        className="w-full mb-4 p-2 border rounded"
                         onChange={handleChange}
                         required
                     />
                     <input
                         name="zip"
                         placeholder="ZIP Code"
-                        className="w-full mb-2 p-2 border rounded"
+                        className="w-full mb-4 p-2 border rounded"
                         onChange={handleChange}
                         required
                     />
                     <input
                         name="country"
                         placeholder="Country"
-                        className="w-full mb-4 p-2 border rounded"
+                        className="w-full mb-6 p-2 border rounded"
                         onChange={handleChange}
                         required
                     />
 
-                    <div className="flex justify-between">
+                    <div className="flex justify-between font-semibold">
                         <button
                             type="submit"
-                            className="bg-black text-white px-4 py-2 rounded hover:bg-neutral-900"
+                            className="bg-slate-300 text-black px-4 py-2 rounded hover:bg-neutral-900"
                         >
                             Save
                         </button>

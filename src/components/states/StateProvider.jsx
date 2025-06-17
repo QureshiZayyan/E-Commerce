@@ -23,19 +23,6 @@ function StateProvider({ children }) {
     };
 
     const placeSingleItemOrder = async (itemId) => {
-        // if (!user) {
-        //     toast.info("Please log in to place the order.", {
-        //         position: "top-center",
-        //         autoClose: 2000,
-        //         theme: "colored"
-        //     });
-        //     return
-        // }
-
-        // if (!selectedItem) {
-        //     alert("Item not found in cart.");
-        //     return;
-        // }
 
         const orderData = {
             userId: user.uid,

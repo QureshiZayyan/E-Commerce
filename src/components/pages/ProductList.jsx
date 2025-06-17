@@ -25,20 +25,20 @@ const ProductList = () => {
   }, []);
 
   return (
-    <div id="productCard-Container" className="grid mx-7 place-items-center grid-cols-2 sm:grid-cols-2 md:grid-cols-4 my-11">
+    <div id="productCard-Container" className="grid mx-7 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center my-11">
       {
         products.map((product) => (
           <div
             key={product.id}
             id="productCard"
-            className="bg-white mb-10 relative w-[22vw] h-[370px] px-4 py-3 rounded-xl shadow-md flex flex-col"
+            className="bg-white mb-10 relative md:w-[28vw] lg:w-[22vw] h-[370px] px-4 py-3 rounded-xl shadow-md flex flex-col"
           >
             <Link to={`product/${product.id}`}>
               <img
                 loading="lazy"
                 src={product.image}
                 alt={product.title}
-                className="w-[200px] mx-auto h-40 mb-4"
+                className="w-[200px] mx-auto h-32 mb-4"
               />
               <h2 className="text-base font-semibold">
                 {truncateText(product.title, 24)}
@@ -65,10 +65,10 @@ const ProductList = () => {
                 Add to Cart
               </button>
             </div>
-          </div>
+          </div >
         ))
       }
-    </div>
+    </div >
   );
 };
 

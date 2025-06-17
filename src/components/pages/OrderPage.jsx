@@ -8,7 +8,7 @@ const OrderPage = () => {
 
     return (
         <>
-            <div id='Order-Container' className="p-10 bg-white w-[80vw] shadow-md mx-auto rounded-lg mt-12 mb-24">
+            <div id='Order-Container' className="p-10 bg-white w-[90vw] shadow-md mx-auto rounded-lg mt-12 mb-24">
                 <h1 className='text-[26px] font-semibold mb-9 text-center text-blue-950'>Your Orders</h1>
                 {showOrders.map((product) => (
                     <Link key={product.id} to={`/product/${product.items.id}`}>
@@ -20,7 +20,7 @@ const OrderPage = () => {
                             />
                             <div>
                                 <h2 className="text-lg font-semibold mb-2">{product.items.title}</h2>
-                                <p className="text-lg mb-2">{truncateText(product.items.description, 80)}</p>
+                                <p className="text-md mb-2">{truncateText(product.items.description, 80)}</p>
                             </div>
                         </div>
                     </Link>

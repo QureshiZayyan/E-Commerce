@@ -11,7 +11,7 @@ const Button = ({ addToCart, product }) => {
     const handleBuyNow = () => {
         if (!user) {
             toast.info("Please login to place the order.", {
-                position: "top-center",
+                position: 'top-center',
                 autoClose: 2000,
                 hideProgressBar: true,
                 theme: 'light',

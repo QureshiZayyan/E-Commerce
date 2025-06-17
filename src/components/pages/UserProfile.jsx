@@ -41,7 +41,7 @@ const UserProfile = () => {
                     </div>
                     <div className="font-bold">
                         <button className="w-[124px] mb-[19px] px-2 py-4 block bg-blue-950 rounded-lg text-white"><NavLink to={'/orders'}>Your Orders</NavLink></button>
-                        <button className='w-[124px] mb-[19px] bg-slate-200 px-2 py-4 rounded-lg'><NavLink to={'/address'}>Edit Address</NavLink></button>
+                        <button className='w-[124px] mb-[19px] bg-slate-300 px-2 py-4 rounded-lg'><NavLink to={'/address'}>Edit Address</NavLink></button>
                         <button
                             className="w-[124px] px-2 py-4 block rounded-lg bg-black text-white"
                             onClick={handleLogout}

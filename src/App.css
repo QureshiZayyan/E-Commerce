@@ -31,7 +31,7 @@ img {
   filter: brightness(1) contrast(1.5);
 }
 
-.text-blue{
+.text-blue {
   color: red !important;
 }
 
@@ -124,7 +124,6 @@ img {
   }
 
   #Order-Container {
-    width: 80vw !important;
   }
 
   #Orders {
@@ -138,9 +137,12 @@ img {
     width: 40vw;
   }
 
-  #AddressForm{
+  #AddressForm {
     width: 80vw;
+  }
 
+  #productCard-Container img {
+    height: 130px !important;
   }
 }
 
@@ -148,5 +150,12 @@ img {
 
   #productCard {
     height: 400px;
+  }
+}
+
+@media(width>=768px) and (width <=1023) {
+
+  #productCard-Container {
+    /* grid-template-columns: repeat(3, 1fr) !important; */
   }
 }

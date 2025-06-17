@@ -27,9 +27,9 @@ const CheckoutPage = () => {
 
     return (
         <div id='Checkout-Container' className="mt-10 mb-16 mx-auto py-8 w-[80vw] bg-white rounded-lg px-10 shadow-md">
-            <h1 className='text-2xl font-semibold mb-10 text-center text-[#172554]'>Confirm Your Order</h1>
+            <h1 className='text-2xl font-semibold mb-12 text-center text-[#172554]'>Confirm Your Order</h1>
             <ul>
-                <li id='Checkout' key={selectedItem.id} className="flex pt-4 pb-8 border-b border-[#172554] gap-14 mb-9">
+                <li id='Checkout' key={selectedItem.id} className="flex items-center pt-4 pb-8 border-b border-[#172554] gap-14 mb-9">
                     <img
                         src={selectedItem.image}
                         alt="Product"
@@ -37,8 +37,8 @@ const CheckoutPage = () => {
                         loading="lazy"
                     />
                     <div>
-                        <h2 className="text-[19.5px] font-semibold mb-2">{selectedItem.title}</h2>
-                        <p className="flex items-center text-[19.5px] text-black">
+                        <h2 className="text-[18px] font-semibold mb-2">{selectedItem.title}</h2>
+                        <p className="flex items-center text-[18px] text-black">
                             Subtotal ({quantity} Quantity):  <MdCurrencyRupee /><span className='font-semibold'>{totalPrice.toFixed(2)}</span>
                         </p>
                         <button
