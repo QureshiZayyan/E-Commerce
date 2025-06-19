@@ -26,7 +26,7 @@ const CheckoutPage = () => {
     }
 
     return (
-        <div id='Checkout-Container' className="mt-10 mb-16 mx-auto py-8 w-[80vw] bg-white rounded-lg px-10 shadow-md">
+        <div id='Checkout-Container' className="my-10 mx-auto py-8 w-[80vw] bg-white rounded-lg px-10 shadow-md">
             <h1 className='text-2xl font-semibold mb-12 text-center text-[#172554]'>Confirm Your Order</h1>
             <ul>
                 <li id='Checkout' key={selectedItem.id} className="flex items-center pt-4 pb-8 border-b border-[#172554] gap-14 mb-9">
@@ -43,7 +43,7 @@ const CheckoutPage = () => {
                         </p>
                         <button
                             onClick={() => placeSingleItemOrder(selectedItem)}
-                            className="mt-4 bg-[#172554] text-white px-3 py-[6px] rounded-2xl"
+                            className="mt-4 font-semibold bg-[#172554] text-white px-3 py-[6px] rounded-2xl"
                         >
                             Place Order
                         </button>
