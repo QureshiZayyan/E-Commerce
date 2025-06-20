@@ -31,8 +31,43 @@ img {
   filter: brightness(1) contrast(1.5);
 }
 
-.text-blue {
-  color: red !important;
+.loader {
+  width: 60px;
+  aspect-ratio: 4;
+  --_g: no-repeat radial-gradient(circle closest-side, #172554 90%, #0000);
+  background:
+    var(--_g) 0% 50%,
+    var(--_g) 50% 50%,
+    var(--_g) 100% 50%;
+  background-size: calc(100%/3) 100%;
+  animation: l7 1s infinite linear;
+  text-align: center;
+  /* position: relative;
+  left: 350px;
+  top: 70px; */
+}
+
+.loader-container {
+  width: 100vw;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+}
+
+@keyframes l7 {
+  33% {
+    background-size: calc(100%/3) 0%, calc(100%/3) 100%, calc(100%/3) 100%
+  }
+
+  50% {
+    background-size: calc(100%/3) 100%, calc(100%/3) 0%, calc(100%/3) 100%
+  }
+
+  66% {
+    background-size: calc(100%/3) 100%, calc(100%/3) 100%, calc(100%/3) 0%
+  }
 }
 
 @media(width<=767px) {
@@ -79,13 +114,9 @@ img {
   }
 
   li img {
-    width: 45vw !important;
+    width: 50vw !important;
     height: 180px !important;
     aspect-ratio: 1/1;
-  }
-
-  .blue {
-    background-color: red !important;
   }
 
   #cart-container {
@@ -123,7 +154,9 @@ img {
     left: 50%;
   }
 
-  #Order-Container {
+  #cart {
+    padding: 35px 22px !important;
+    /* background-color: red; */
   }
 
   #Orders {

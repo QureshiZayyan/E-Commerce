@@ -23,7 +23,7 @@ const Address = () => {
         country: '',
     });
 
-    const [docId, setDocId] = useState(null); // Track document ID if address exists
+    const [docId, setDocId] = useState(null);
     const [showForm, setShowForm] = useState(false);
     const [showBtn, setShowBtn] = useState(true);
 

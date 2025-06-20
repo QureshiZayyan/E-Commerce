@@ -1,10 +1,8 @@
 import { useEffect, useContext } from "react";
-import { MdStarRate } from "react-icons/md";
-import { MdCurrencyRupee } from "react-icons/md";
+import { MdStarRate, MdCurrencyRupee } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { StateContext } from "../states/StateProvider";
-import Button from "../layout/Button";
-
+import Loader from "../layout/Loader";
 
 const ProductList = () => {
   const { products, setProducts, addToCart, truncateText } = useContext(StateContext);
@@ -25,20 +23,20 @@ const ProductList = () => {
   }, []);
 
   return (
-    <div id="productCard-Container" className="grid mx-7 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center my-11">
-      {
-        products.map((product) => (
+    products.length !== 0 ? (
+      <div id="productCard-Container" className="grid mx-7 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 place-items-center my-11">
+        {products.map((product) => (
           <div
             key={product.id}
             id="productCard"
-            className="bg-white mb-10 relative md:w-[28vw] lg:w-[22vw] h-[370px] px-4 py-3 rounded-xl shadow-md flex flex-col"
+            className="bg-white mb-10 relative md:w-[28vw] lg:w-[21.5vw] h-[370px] px-4 py-3 rounded-xl shadow-md flex flex-col"
           >
             <Link to={`product/${product.id}`}>
               <img
                 loading="lazy"
                 src={product.image}
                 alt={product.title}
-                className="w-[200px] mx-auto h-32 mb-4"
+                className="w-[90%] mx-auto h-[125px] mb-4"
               />
               <h2 className="text-base font-semibold">
                 {truncateText(product.title, 24)}
@@ -65,10 +63,12 @@ const ProductList = () => {
                 Add to Cart
               </button>
             </div>
-          </div >
-        ))
-      }
-    </div >
+          </div>
+        ))}
+      </div>
+    ) : (
+      <Loader />
+    )
   );
 };
 
