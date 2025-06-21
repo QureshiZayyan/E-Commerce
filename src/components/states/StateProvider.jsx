@@ -16,6 +16,7 @@ function StateProvider({ children }) {
     const [selectedItem, setSelectedItem] = useState(null);
     const [quantity, setQuantity] = useState(1);
     const [totalPrice, setTotalPrice] = useState(0);
+    const [userProfile, setUserProfile] = useState(false);
 
     const truncateText = (text, maxLength) => {
         if (text.length <= maxLength) return text;
@@ -75,9 +76,9 @@ function StateProvider({ children }) {
 
         const updatedCart = [...cart, product];
         setCart(updatedCart);
-    };
+    }
 
-    const FetchData = async () => {
+    const FetchUserAddress = async () => {
         const q = query(
             collection(db, "addresses"),
             where("userId", "==", user.uid));
@@ -88,6 +89,7 @@ function StateProvider({ children }) {
             ...doc.data()
         }));
         setUserAddress(UserData);
+        setUserProfile(true);
     };
 
     const FetchUserOrders = async () => {
@@ -107,7 +109,7 @@ function StateProvider({ children }) {
     useEffect(() => {
         const fetchDataAndOrders = async () => {
             if (user?.uid) {
-                await FetchData();
+                await FetchUserAddress();
                 await FetchUserOrders();
             }
         };
@@ -115,13 +117,11 @@ function StateProvider({ children }) {
         fetchDataAndOrders();
     }, [user]);
 
-
-
     return (
         <StateContext.Provider value={{
-            FetchData, setProducts, products, user, setUser, cart, setCart, addToCart, userAddress, setUserAddress,
+            FetchUserAddress, setProducts, products, user, setUser, cart, setCart, addToCart, userAddress, setUserAddress,
             placeSingleItemOrder, showOrders, setShowOrders, selectedItem, setSelectedItem, setQuantity, quantity, setTotalPrice, totalPrice,
-            truncateText
+            truncateText, userProfile, setUserProfile
         }}>
             {children}
         </StateContext.Provider>

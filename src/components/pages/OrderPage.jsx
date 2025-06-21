@@ -18,7 +18,7 @@ const OrderPage = () => {
                                 <img
                                     src={product.items.image}
                                     alt="Product"
-                                    className="w-[25vw] h-[40vh]"
+                                    className="w-[25vw] h-[140px]"
                                 />
                                 <div>
                                     <h2 className="text-lg font-semibold mb-2">{product.items.title}</h2>

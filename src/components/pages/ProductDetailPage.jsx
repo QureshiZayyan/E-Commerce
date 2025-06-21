@@ -34,14 +34,13 @@ const ProductDetailPage = () => {
     }
     return (
         <>
-            <div id="Product-Detail-Page" className="p-16 flex justify-center md:flex-row gap-12">
+            <div id="Product-Detail-Page" className="p-14 flex justify-center md:flex-row gap-12">
                 <div id='img' className='w-[30vw]'>
                     <img
                         src={selectedProduct.image}
                         alt="Product"
                         className="rounded-lg w-full h-[200px]"
-                        loading='lazy'
-                    />
+                        loading='lazy' />
                 </div>
 
                 <div id='product-content' className="w-[50vw]">
@@ -49,7 +48,10 @@ const ProductDetailPage = () => {
                     <p className="text-black mb-4 text-[16px]">
                         {selectedProduct.description}
                     </p>
-                    {/* <p className="my-3 flex"><MdStarRate className='mr-[2px]' size={18} />{selectedProduct.rating.rate}</p> */}
+                    <p className="text-yellow-500 mb-2 text-lg">
+                        <MdStarRate className="mr-1 inline" color="#EAB308" />
+                        {selectedProduct.rating?.rate}
+                    </p>
                     <p className="text-2xl font-semibold flex items-center"><MdCurrencyRupee />{selectedProduct.price}</p>
 
                     <div className="flex items-center gap-4 mt-4">

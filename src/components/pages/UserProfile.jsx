@@ -7,7 +7,7 @@ import Loader from "../layout/Loader";
 
 const UserProfile = () => {
     const navigate = useNavigate();
-    const { user, userAddress } = useContext(StateContext);
+    const { user, userAddress, userProfile } = useContext(StateContext);
 
     const handleLogout = async () => {
         try {
@@ -20,41 +20,42 @@ const UserProfile = () => {
 
     return (
         <>
-            {userAddress.length !== 0 ?
-                <div className="mt-[62px] mb-[75px]">
-                    {/* <h2 className="text-2xl font-bold">Welcome {user.email}</h2> */}
-                    <h2 className="text-2xl font-bold mx-10 mb-10 text-center">👋 Hello {user ? user.displayName : 'User'} !</h2>
+            {
+                userProfile ?
+                    <div className="mt-[62px] mb-[75px]">
+                        {/* <h2 className="text-2xl font-bold">Welcome {user.email}</h2> */}
+                        <h2 className="text-2xl font-bold mx-10 mb-10 text-center">👋 Hello {user ? user.displayName : 'User'} !</h2>
 
-                    <div id="UserPorfile" className="flex justify-center gap-4">
-                        <div id="Address">
-                            {
-                                userAddress.map((res) => (
-                                    <ul key={res.id} className="rounded-[8px] py-4 pr-7 pl-3 border-2 border-black w-[230px]">
-                                        <li className='mb-1 font-bold'>Default Address</li>
-                                        <li><span className="font-bold">Name : </span>{res.fullName}</li>
-                                        <li><span className="font-bold">Street : </span> {res.street}</li>
-                                        <li><span className="font-bold">City : </span> {res.city}</li>
-                                        <li><span className="font-bold">State : </span>{res.state}</li>
-                                        <li><span className="font-bold">Zip Code : </span>{res.zip}</li>
-                                        <li><span className="font-bold">Country : </span>{res.country}</li>
-                                    </ul>
-                                ))
-                            }
-                        </div>
-                        <div className="font-bold">
-                            <button className="w-[124px] mb-[19px] px-2 py-4 block bg-blue-950 rounded-lg text-white"><NavLink to={'/orders'}>Your Orders</NavLink></button>
-                            <button className='w-[124px] mb-[19px] bg-slate-300 px-2 py-4 rounded-lg'><NavLink to={'/address'}>Edit Address</NavLink></button>
-                            <button
-                                className="w-[124px] px-2 py-4 block rounded-lg bg-black text-white"
-                                onClick={handleLogout}
-                            >
-                                logout
-                            </button>
+                        <div id="UserPorfile" className="flex justify-center gap-4">
+                            <div id="Address">
+                                {
+                                    userAddress.map((res) => (
+                                        <ul key={res.id} className="rounded-[8px] py-4 pr-2 pl-3 border-2 border-black w-[240px]">
+                                            <li className='mb-1 font-bold'>Default Address</li>
+                                            <li><span className="font-bold">Name : </span>{res.fullName}</li>
+                                            <li><span className="font-bold">Street : </span> {res.street}</li>
+                                            <li><span className="font-bold">City : </span> {res.city}</li>
+                                            <li><span className="font-bold">State : </span>{res.state}</li>
+                                            <li><span className="font-bold">Zip Code : </span>{res.zip}</li>
+                                            <li><span className="font-bold">Country : </span>{res.country}</li>
+                                        </ul>
+                                    ))
+                                }
+                            </div>
+                            <div className="font-bold">
+                                <button className="w-[130px] mb-[19px] px-2 py-4 block bg-blue-950 rounded-lg text-white"><NavLink to={'/orders'}>Your Orders</NavLink></button>
+                                <button className='w-[130px] mb-[19px] bg-slate-300 px-2 py-4 rounded-lg'><NavLink to={'/address'}>{userAddress.length === 0 ? 'Add Address' : 'Edit Address'}</NavLink></button>
+                                <button
+                                    className="w-[130px] px-2 py-4 block rounded-lg bg-black text-white"
+                                    onClick={handleLogout}
+                                >
+                                    logout
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-                :
-                <Loader />
+                    :
+                    <Loader />
             }
         </>
     )

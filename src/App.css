@@ -95,8 +95,12 @@ img {
   }
 
   #img {
-    width: 55vw;
+    width: 60vw;
     margin: auto;
+  }
+
+  #img img {
+    height: 160px;
   }
 
   nav {
