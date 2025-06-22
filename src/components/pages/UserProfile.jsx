@@ -31,20 +31,20 @@ const UserProfile = () => {
                                 {
                                     userAddress.map((res) => (
                                         <ul key={res.id} className="rounded-[8px] py-4 pr-2 pl-3 border-2 border-black w-[240px]">
-                                            <li className='mb-1 font-bold'>Default Address</li>
-                                            <li><span className="font-bold">Name : </span>{res.fullName}</li>
-                                            <li><span className="font-bold">Street : </span> {res.street}</li>
-                                            <li><span className="font-bold">City : </span> {res.city}</li>
-                                            <li><span className="font-bold">State : </span>{res.state}</li>
-                                            <li><span className="font-bold">Zip Code : </span>{res.zip}</li>
-                                            <li><span className="font-bold">Country : </span>{res.country}</li>
+                                            <li className='font-bold mb-2'>Default Address</li>
+                                            <li><span className="font-bold mb-1">Name : </span>{res.fullName}</li>
+                                            <li><span className="font-bold mb-1">Street : </span> {res.street}</li>
+                                            <li><span className="font-bold mb-1">City : </span> {res.city}</li>
+                                            <li><span className="font-bold mb-1">State : </span>{res.state}</li>
+                                            <li><span className="font-bold mb-1">Zip Code : </span>{res.zip}</li>
+                                            <li><span className="font-bold mb-1">Country : </span>{res.country}</li>
                                         </ul>
                                     ))
                                 }
                             </div>
                             <div className="font-bold">
-                                <button className="w-[130px] mb-[19px] px-2 py-4 block bg-blue-950 rounded-lg text-white"><NavLink to={'/orders'}>Your Orders</NavLink></button>
-                                <button className='w-[130px] mb-[19px] bg-slate-300 px-2 py-4 rounded-lg'><NavLink to={'/address'}>{userAddress.length === 0 ? 'Add Address' : 'Edit Address'}</NavLink></button>
+                                <button className="w-[130px] mb-[21.2px] px-2 py-4 block bg-blue-950 rounded-lg text-white"><NavLink to={'/orders'}>Your Orders</NavLink></button>
+                                <button className='w-[130px] mb-[21.2px] bg-slate-300 px-2 py-4 rounded-lg'><NavLink to={'/address'}>{userAddress.length === 0 ? 'Add Address' : 'Edit Address'}</NavLink></button>
                                 <button
                                     className="w-[130px] px-2 py-4 block rounded-lg bg-black text-white"
                                     onClick={handleLogout}

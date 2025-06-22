@@ -29,7 +29,7 @@ const ProductList = () => {
           <div
             key={product.id}
             id="productCard"
-            className="bg-white mb-10 relative md:w-[28vw] lg:w-[21.5vw] h-[370px] px-4 py-3 rounded-xl shadow-md flex flex-col"
+            className="bg-white mb-10 relative w-[25vw] md:w-[28vw] lg:w-[21.5vw] h-[370px] px-4 py-3 rounded-xl shadow-md flex flex-col"
           >
             <Link to={`product/${product.id}`}>
               <img

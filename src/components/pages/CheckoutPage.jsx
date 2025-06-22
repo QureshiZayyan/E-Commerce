@@ -26,14 +26,14 @@ const CheckoutPage = () => {
     }
 
     return (
-        <div id='Checkout-Container' className="my-10 mx-auto py-8 w-[80vw] bg-white rounded-lg px-10 shadow-md">
+        <div id='Checkout-Container' className="my-10 mx-auto py-8 w-[85vw] bg-white rounded-lg px-10 shadow-md">
             <h1 className='text-2xl font-semibold mb-12 text-center text-[#172554]'>Confirm Your Order</h1>
             <ul>
                 <li id='Checkout' key={selectedItem.id} className="flex items-center pt-4 pb-8 border-b border-[#172554] gap-14 mb-9">
                     <img
                         src={selectedItem.image}
                         alt="Product"
-                        className="w-[20vw] h-[40vh]"
+                        className="w-[20vw] h-[32vh]"
                         loading="lazy"
                     />
                     <div>
@@ -54,15 +54,9 @@ const CheckoutPage = () => {
             <div>
                 <p className='font-bold mb-5'>Delivering To :</p>
                 {userAddress.map((res) => (
-                    <ul key={res.id} className="rounded-[8px] py-4 pr-7 pl-3 border-2 border-black w-[230px]">
-                        <li className='mb-1 font-bold'>Default Address</li>
-                        <li><span className="font-bold">Name : </span>{res.fullName}</li>
-                        <li><span className="font-bold">Street : </span> {res.street}</li>
-                        <li><span className="font-bold">City : </span> {res.city}</li>
-                        <li><span className="font-bold">State : </span>{res.state}</li>
-                        <li><span className="font-bold">Zip Code : </span>{res.zip}</li>
-                        <li><span className="font-bold">Country : </span>{res.country}</li>
-                    </ul>
+                    <>
+                        <p className="font-semibold">{res.fullName}, {res.street}, {res.city} {res.zip}, {res.state}, {res.country}</p>
+                    </>
                 ))}
             </div>
         </div >

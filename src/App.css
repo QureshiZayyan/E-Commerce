@@ -72,6 +72,10 @@ img {
 
 @media(width<=767px) {
 
+  #Order-Container {
+    padding: 40px 22px !important;
+  }
+
   #productCard {
     width: 46vw;
   }
@@ -119,7 +123,7 @@ img {
 
   li img {
     width: 50vw !important;
-    height: 180px !important;
+    height: 150px !important;
     aspect-ratio: 1/1;
   }
 
@@ -171,7 +175,7 @@ img {
   }
 
   #Orders img {
-    width: 40vw;
+    width: 50vw;
   }
 
   #AddressForm {

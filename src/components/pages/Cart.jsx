@@ -32,7 +32,7 @@ const Cart = () => {
 
   return (
     <div id='cart-container' className="my-10">
-      <div id='cart' className="mx-auto rounded-lg py-10 px-10 w-[90vw] shadow-md bg-white">
+      <div id='cart' className="mx-auto rounded-lg py-10 px-10 w-[85vw] shadow-md bg-white">
         <h1 className="text-2xl font-bold mb-11 text-center text-[#172554]">Your Cart Items</h1>
         <ul>
           {

@@ -28,6 +28,7 @@ function StateProvider({ children }) {
         const orderData = {
             userId: user.uid,
             items: selectedItem,
+            // items: cart,
             total: selectedItem.price,
             userAddress,
         };
@@ -45,7 +46,15 @@ function StateProvider({ children }) {
             });
         } catch (err) {
             console.error("Error placing order:", err);
-            alert("❌ Failed to place order.");
+            toast.error("Oops Something Went Wrong", {
+                position: "top-center",
+                autoClose: 2000,
+                hideProgressBar: true,
+                theme: 'light',
+                closeOnClick: true,
+                transition: Zoom,
+                Limit: 1,
+            });
         }
     };
 
@@ -90,6 +99,8 @@ function StateProvider({ children }) {
         }));
         setUserAddress(UserData);
         setUserProfile(true);
+        console.log(UserData);
+
     };
 
     const FetchUserOrders = async () => {
