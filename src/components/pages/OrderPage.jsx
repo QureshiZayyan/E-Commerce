@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { StateContext } from '../states/StateProvider';
 import { Link } from 'react-router-dom';
-import Loader from '../layout/Loader';
+import Loader from '../layout/Loader'
 
 const OrderPage = () => {
 
@@ -9,7 +9,8 @@ const OrderPage = () => {
 
     return (
         <>
-            {showOrders.length !== 0 ?
+            {showOrders.length === 0 ? (<h2 className='text-xl font-semibold text-center mt-[100px] text-[#172554]'>No Orders To Show</h2>)
+                :
                 <div id='Order-Container' className="p-10 bg-white w-[85vw] shadow-md mx-auto rounded-lg mt-12 mb-24">
                     <h1 className='text-[26px] font-semibold mb-9 text-center text-blue-950'>Your Orders</h1>
                     {showOrders.map((product) => (
@@ -28,8 +29,7 @@ const OrderPage = () => {
                         </Link>
                     ))}
                 </div>
-                :
-                <Loader />
+                // <Loader />
             }
         </>
     )

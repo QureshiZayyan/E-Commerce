@@ -19,6 +19,7 @@ function StateProvider({ children }) {
     const [userProfile, setUserProfile] = useState(false);
 
     const truncateText = (text, maxLength) => {
+        if (!text) return "";
         if (text.length <= maxLength) return text;
         return text.substring(0, maxLength) + "...";
     };
@@ -29,7 +30,7 @@ function StateProvider({ children }) {
             userId: user.uid,
             items: selectedItem,
             // items: cart,
-            total: selectedItem.price,
+            // total: selectedItem.price,
             userAddress,
         };
 

@@ -6,7 +6,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   letter-spacing: 0.7px;
-  background-color: rgb(239, 237, 237);
+  background-color: rgb(241, 238, 238);
   height: 100%;
 }
 
@@ -183,7 +183,7 @@ img {
   }
 
   #productCard-Container img {
-    height: 130px !important;
+    height: 110px !important;
   }
 }
 

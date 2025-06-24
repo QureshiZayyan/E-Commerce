@@ -7,10 +7,6 @@ const CheckoutPage = () => {
     const { placeSingleItemOrder, products, selectedItem, setSelectedItem, totalPrice, quantity, userAddress } = useContext(StateContext);
     const { id } = useParams();
 
-    // useEffect(() => {
-    //     placeSingleItemOrder();
-    // }, [selectedItem]);
-
     useEffect(() => {
         if (products && id) {
             const numericId = parseInt(id);

@@ -3,9 +3,10 @@ import { MdStarRate, MdCurrencyRupee } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { StateContext } from "../states/StateProvider";
 import Loader from "../layout/Loader";
+import { MdDone } from "react-icons/md";
 
 const ProductList = () => {
-  const { products, setProducts, addToCart, truncateText } = useContext(StateContext);
+  const { products, setProducts, addToCart, truncateText, cart } = useContext(StateContext);
 
   const FetchData = async () => {
     try {
@@ -36,14 +37,13 @@ const ProductList = () => {
                 loading="lazy"
                 src={product.image}
                 alt={product.title}
-                className="w-[90%] mx-auto h-[125px] mb-4"
+                className="w-[95%] mx-auto h-[120px] mb-4"
               />
               <h2 className="text-base font-semibold">
                 {truncateText(product.title, 24)}
               </h2>
             </Link>
 
-            {/* Bottom Content Container */}
             <div className="absolute bottom-[20px] left-4">
               <Link to={`product/${product.id}`}>
                 <p className="text-yellow-500 mb-2">
@@ -58,9 +58,17 @@ const ProductList = () => {
 
               <button
                 onClick={() => addToCart(product)}
-                className="text-[13px] bg-[#172554] text-white font-semibold py-[6px] px-[10.2px] rounded-2xl"
+                className="flex items-center text-[13px] bg-[#172554] text-white font-semibold py-[6px] px-[10.2px] rounded-2xl"
               >
-                Add to Cart
+                {
+                  cart.some(item => item.id === product.id) ? (
+                    <span className="flex items-center gap-1 text-white">
+                      <MdDone color="white" size={18} /> Added
+                    </span>
+                  ) : (
+                    'Add to Cart'
+                  )
+                }
               </button>
             </div>
           </div>

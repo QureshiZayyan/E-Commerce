@@ -32,51 +32,56 @@ const Cart = () => {
 
   return (
     <div id='cart-container' className="my-10">
-      <div id='cart' className="mx-auto rounded-lg py-10 px-10 w-[85vw] shadow-md bg-white">
-        <h1 className="text-2xl font-bold mb-11 text-center text-[#172554]">Your Cart Items</h1>
-        <ul>
-          {
-            cart.length === 0 ? (<p className='text-center font-semibold text-xl'>Your Cart is Empty</p>)
-              : cart.map((item) => (
-                <li key={item.id} className="flex items-center pt-4 pb-8 border-b-[0.2px] border-[#172554] gap-9 mb-9">
+      {cart.length === 0 ? (<p className='text-center text-[#172554] font-semibold text-xl mt-[100px]'>Your Cart is Empty</p>)
+        :
+        <div id='cart' className="mx-auto rounded-lg py-10 px-10 w-[85vw] shadow-md bg-white">
+          <h1 className="text-2xl font-bold mb-11 text-center text-[#172554]">Your Cart Items</h1>
+          <ul>
 
-                  <Link to={`/product/${item.id}`} className="flex-shrink-0">
-                    <img
-                      src={item.image}
-                      alt="Product"
-                      className="w-[200px] h-[32vh]"
-                      loading="lazy"
-                    />
+            {cart.map((item) => (
+              <li key={item.id} className="flex items-center pt-4 pb-8 border-b-[0.2px] border-[#172554] gap-9 mb-9">
+
+                <input
+                  type="checkbox"
+                  className="w-5 h-5"
+                />
+                <Link to={`/product/${item.id}`} className="flex-shrink-0">
+                  <img
+                    src={item.image}
+                    alt="Product"
+                    className="w-[200px] h-[32vh]"
+                    loading="lazy"
+                  />
+                </Link>
+
+                <div>
+                  <Link to={`/product/${item.id}`}>
+                    <h2 className="text-lg font-semibold">{item.title}</h2>
+                    <p className="flex items-center my-2 text-[20.5px] text-black">
+                      <MdCurrencyRupee />
+                      {item.price}
+                    </p>
                   </Link>
 
-                  <div>
-                    <Link to={`/product/${item.id}`}>
-                      <h2 className="text-lg font-semibold">{item.title}</h2>
-                      <p className="flex items-center my-2 text-[20.5px] text-black">
-                        <MdCurrencyRupee />
-                        {item.price}
-                      </p>
-                    </Link>
+                  <button
+                    onClick={() => handleBuyNow(item)}
+                    className="text-[13px] font-semibold bg-[#172554] text-white mt-3 py-[6px] px-[10.2px] rounded-2xl"
+                  >
+                    Buy Now
+                  </button>
 
-                    <button
-                      onClick={() => handleBuyNow(item)}
-                      className="text-[13px] font-semibold bg-[#172554] text-white mt-3 py-[6px] px-[10.2px] rounded-2xl"
-                    >
-                      Buy Now
-                    </button>
-
-                    <button
-                      onClick={() => removeFromCart(item.id)}
-                      className="text-[13px] font-semibold mx-2 bg-black text-white mt-3 py-[6px] px-[10.2px] rounded-2xl"
-                    >
-                      Remove
-                    </button>
-                  </div>
-                </li>
-              ))
-          }
-        </ul>
-      </div>
+                  <button
+                    onClick={() => removeFromCart(item.id)}
+                    className="text-[13px] font-semibold mx-2 bg-black text-white mt-3 py-[6px] px-[10.2px] rounded-2xl"
+                  >
+                    Remove
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      }
     </div>
   );
 };

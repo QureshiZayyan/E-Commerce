@@ -1,11 +1,11 @@
-// Button.jsx
 import { useNavigate } from "react-router-dom";
 import { toast, Zoom } from 'react-toastify';
 import { useContext } from "react";
 import { StateContext } from '../states/StateProvider';
+import { MdDone } from "react-icons/md";
 
 const Button = ({ addToCart, product }) => {
-    const { user } = useContext(StateContext);
+    const { user, cart } = useContext(StateContext);
     const navigate = useNavigate();
 
     const handleBuyNow = () => {
@@ -27,12 +27,20 @@ const Button = ({ addToCart, product }) => {
     return (
         <>
             <button onClick={addToCart}
-                className="font-semibold text-[13px] bg-[#172554] text-white py-[9px] px-[10.2px] rounded-2xl">
-                Add to Cart
+                className="font-semibold text-[15px] bg-[#172554] text-white py-[9px] px-[10.2px] rounded-2xl">
+                {
+                    cart.some(item => item.id === product.id) ? (
+                        <span className="flex items-center gap-1 text-white">
+                            <MdDone color="white" size={18} /> Added
+                        </span>
+                    ) : (
+                        'Add to Cart'
+                    )
+                }
             </button>
 
             <button onClick={handleBuyNow}
-                className="text-[13px] bg-black font-semibold text-white py-[9px] px-[10.2px] rounded-2xl">
+                className="text-[15px] bg-black font-semibold text-white py-[9px] px-[10.2px] rounded-2xl">
                 Buy Now
             </button>
         </>
