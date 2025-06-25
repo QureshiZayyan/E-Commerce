@@ -56,8 +56,8 @@ const ProductDetailPage = () => {
 
                     <div className="flex items-center gap-4 mt-4">
                         <select className='bg-slate-200 py-2 w-[50px] px-1 rounded-md' value={quantity} onChange={handleQuantityChange}>
-                            {[1, 2, 3, 4, 5].map(qty => (
-                                <option key={qty} value={qty}>
+                            {[1, 2, 3, 4, 5, 6].map(qty => (
+                                <option key={qty}>
                                     {qty}
                                 </option>
                             ))}

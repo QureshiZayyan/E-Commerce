@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { StateContext } from '../states/StateProvider'
 import { MdCurrencyRupee } from "react-icons/md";
 import { toast, Zoom } from 'react-toastify';
@@ -13,6 +13,18 @@ const Cart = () => {
     const updatedCart = cart.filter(item => item.id !== productId);
     setCart(updatedCart);
   }
+
+  const toggleCheck = (id) => {
+    setCart(prev =>
+      prev.map(item =>
+        item.id === id ? { ...item, checked: !item.checked } : item
+      )
+    );
+  };
+
+  useEffect(() => {
+    console.log("Cart updated:", cart);
+  }, [cart]);
 
   const handleBuyNow = (product) => {
     if (!user) {
@@ -43,7 +55,8 @@ const Cart = () => {
 
                 <input
                   type="checkbox"
-                  className="w-5 h-5"
+                  checked={item.checked}
+                  onChange={() => toggleCheck(item.id)}
                 />
                 <Link to={`/product/${item.id}`} className="flex-shrink-0">
                   <img
@@ -62,6 +75,16 @@ const Cart = () => {
                       {item.price}
                     </p>
                   </Link>
+
+                  <div className="flex items-center gap-4 mt-4">
+                    <select className='bg-slate-200 py-2 w-[50px] px-1 rounded-md'>
+                      {[1, 2, 3, 4, 5].map(qty => (
+                        <option key={qty} value={qty}>
+                          {qty}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
                   <button
                     onClick={() => handleBuyNow(item)}

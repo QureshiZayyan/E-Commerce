@@ -67,9 +67,9 @@ function StateProvider({ children }) {
     }, []);
 
     useEffect(() => {
-        // if (cart.length > 0) {
-        localStorage.setItem("cartItems", JSON.stringify(cart));
-        // }
+        if (cart.length > 0) {
+            localStorage.setItem("cartItems", JSON.stringify(cart));
+        }
     }, [cart]);
 
     useEffect(() => {
@@ -84,8 +84,11 @@ function StateProvider({ children }) {
         const check = cart.some(item => item.id === product.id);
         if (check) return;
 
-        const updatedCart = [...cart, product];
-        setCart(updatedCart);
+        // const updatedCart = [...cart, product];
+        // setCart(updatedCart);
+
+        setCart(prev => [...prev, { ...product, checked: false }]);
+
     }
 
     const FetchUserAddress = async () => {
