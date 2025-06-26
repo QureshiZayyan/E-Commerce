@@ -4,7 +4,6 @@ import { StateContext } from "../states/StateProvider";
 import { auth } from "../../firebase";
 import { signOut } from "firebase/auth";
 import Loader from "../layout/Loader";
-import Input from "../input";
 
 const UserProfile = () => {
     const navigate = useNavigate();
@@ -58,7 +57,6 @@ const UserProfile = () => {
                     :
                     <Loader />
             }
-            <Input/>
         </>
     )
 };
