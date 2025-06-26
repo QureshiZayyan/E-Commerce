@@ -4,7 +4,7 @@ import { Suspense, lazy } from 'react';
 import Navbar from './components/layout/Navbar';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Loader from './components/layout/Loader'
+import Loader from './components/layout/Loader';
 
 const ProductList = lazy(() => import('./components/pages/ProductList'));
 const ProductDetailPage = lazy(() => import('./components/pages/ProductDetailPage'));

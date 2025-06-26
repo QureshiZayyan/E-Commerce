@@ -31,6 +31,12 @@ img {
   filter: brightness(1) contrast(1.5);
 }
 
+input[type="checkbox"] {
+  transform: scale(1.5);
+  /* Increase size */
+  margin: 2px;
+}
+
 .loader {
   width: 60px;
   aspect-ratio: 4;
@@ -154,6 +160,10 @@ img {
     padding: 6px 15px;
   }
 
+  #cart-container ul {
+    margin: 0 !important;
+  }
+
   #form {
     width: 90vw;
   }
@@ -184,6 +194,12 @@ img {
 
   #productCard-Container img {
     height: 110px !important;
+  }
+
+  input[type="checkbox"] {
+    position: relative;
+    right: 134px;
+    top: 76px;
   }
 }
 
