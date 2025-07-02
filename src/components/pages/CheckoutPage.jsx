@@ -1,50 +1,69 @@
+
 import React, { useContext, useEffect } from 'react';
 import { StateContext } from '../states/StateProvider';
 import { MdCurrencyRupee } from "react-icons/md";
 import { useParams } from 'react-router-dom';
 
 const CheckoutPage = () => {
-    const { placeSingleItemOrder, products, selectedItem, setSelectedItem, totalPrice, quantity, userAddress } = useContext(StateContext);
+    const { placeSingleItemOrder, cart, products, truncateText, selectedItem, setSelectedItem, totalPrice, quantity, userAddress, checkedItems } = useContext(StateContext);
     const { id } = useParams();
 
     useEffect(() => {
-        if (products && id) {
+        if (id) {
             const numericId = parseInt(id);
             const foundProduct = products.find(
                 (p) => p.id === numericId
             );
             setSelectedItem(foundProduct || null);
+        } else {
+            setSelectedItem(null)
         }
-    }, [id, products]);
+    }, [id]);
 
-    if (!selectedItem) {
-        return <div className="p-10 text-center">Loading product...</div>;
-    }
+    // if (!selectedItem) {
+    //     return <div className="p-10 text-center">Loading product...</div>;
+    // }
 
     return (
         <div id='Checkout-Container' className="my-10 mx-auto py-8 w-[85vw] bg-white rounded-lg px-10 shadow-md">
             <h1 className='text-2xl font-semibold mb-12 text-center text-[#172554]'>Confirm Your Order</h1>
             <ul>
-                <li id='Checkout' key={selectedItem.id} className="flex items-center pt-4 pb-8 border-b border-[#172554] gap-14 mb-9">
-                    <img
-                        src={selectedItem.image}
-                        alt="Product"
-                        className="w-[20vw] h-[32vh]"
-                        loading="lazy"
-                    />
-                    <div>
-                        <h2 className="text-[18px] font-semibold mb-2">{selectedItem.title}</h2>
-                        <p className="flex items-center text-[18px] text-black">
-                            Subtotal ({quantity} Quantity):  <MdCurrencyRupee /><span className='font-semibold'>{totalPrice.toFixed(2)}</span>
-                        </p>
-                        <button
-                            onClick={() => placeSingleItemOrder(selectedItem)}
-                            className="mt-4 font-semibold bg-[#172554] text-white px-3 py-[6px] rounded-2xl"
-                        >
-                            Place Order
-                        </button>
-                    </div>
-                </li>
+                {selectedItem ?
+                    <li id='Checkout' key={selectedItem.id} className="flex items-center pt-4 pb-8 border-b border-[#172554] gap-14 mb-9">
+                        <img
+                            src={selectedItem.image}
+                            alt="Product"
+                            className="w-[20vw] h-[32vh]"
+                            loading="lazy"
+                        />
+                        <div>
+                            <h2 className="text-[18px] font-semibold mb-2">{selectedItem.title}</h2>
+                            <p className="flex items-center text-[18px] text-black">
+                                Subtotal ({quantity} Quantity):  <MdCurrencyRupee /><span className='font-semibold'>{totalPrice.toFixed(2)}</span>
+                            </p>
+                            <button
+                                onClick={() => placeSingleItemOrder(selectedItem)}
+                                className="mt-4 font-semibold bg-[#172554] text-white px-3 py-[6px] rounded-2xl"
+                            >
+                                Place Order
+                            </button>
+                        </div>
+                    </li>
+                    :
+                    checkedItems.map((product) => (
+                        <div key={product.id} className="flex items-center pt-4 pb-8 border-b border-[#172554] gap-9 mb-9">
+                            <img
+                                src={product.items.image}
+                                alt="Product"
+                                className="w-[22vw] h-[140px]"
+                            />
+                            <div>
+                                <h2 className="text-lg font-semibold mb-2">{product.title}</h2>
+                                <p className="text-md mb-2">{truncateText(product.description, 80)}</p>
+                            </div>
+                        </div>
+                    ))
+                }
             </ul>
 
             <div>

@@ -17,7 +17,7 @@ const Navbar = () => {
         {/* Cart */}
         <NavLink to='/cart' className="text-white font-semibold hover:text-gray-300 flex items-center relative">
           <ShoppingCart size={27} />
-          {cart.length > 0 && (
+          {cart?.length > 0 && (
             <span className="absolute top-[-6px] left-4 text-xs font-bold bg-white text-[#172554] px-[6px] py-[2px] rounded-full">
               {cart.length}
             </span>

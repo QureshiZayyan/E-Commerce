@@ -8,7 +8,7 @@ import { StateContext } from '../states/StateProvider';
 const ProductDetailPage = () => {
 
     const { products, addToCart, quantity, setQuantity, setTotalPrice } = useContext(StateContext);
-    const [selectedProduct, setSelectedProduct] = useState([]);
+    const [selectedProduct, setSelectedProduct] = useState(null);
     const { id } = useParams();
 
     const handleQuantityChange = (e) => {

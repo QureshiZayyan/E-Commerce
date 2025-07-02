@@ -5,16 +5,13 @@ import { toast, Zoom } from 'react-toastify';
 import { useNavigate, Link } from 'react-router-dom';
 
 const Cart = () => {
-
   const navigate = useNavigate();
-  const { cart, user, setCart, quantity, setQuantity } = useContext(StateContext);
+  const { cart, user, setCart, quantity, setQuantity, checkedItems, setCheckedItems } = useContext(StateContext);
 
   const removeFromCart = (productId) => {
     const updatedCart = cart.filter(item => item.id !== productId);
     setCart(updatedCart);
   }
-
-  console.log(cart);
 
   const handleQuantityChange = (e) => {
     const qty = parseInt(e.target.value);
@@ -26,7 +23,6 @@ const Cart = () => {
       prev.map(item => ({ ...item, checked }))
     );
   };
-
 
   // const toggleCheck = (id) => {
   //   setCart(prev =>
@@ -56,10 +52,19 @@ const Cart = () => {
       });
       return;
     }
-    navigate(`/item/${product.id}`);
+    navigate(checkedItems.length > 0 ? '/checkout' : `/item/${product.id}`);
   };
 
   const allSelected = cart.every(item => item.checked);
+
+  useEffect(() => {
+
+    if (cart.length > 0) {
+      const filteredCheckedItems = cart.filter(item => item.checked);
+      setCheckedItems(filteredCheckedItems);
+      console.log("Checked Items =", filteredCheckedItems);
+    }
+  }, [cart])
 
   return (
     <div id='cart-container' className="my-10">
@@ -129,6 +134,7 @@ const Cart = () => {
               </li>
             ))}
           </ul>
+          {checkedItems.length > 0 && <Link to={'/checkout'} className='text-[14px] font-semibold mx-2 bg-[#172554] text-white mt-3 py-[6px] px-[10.2px] rounded-2xl'>Proceed to Buy</Link>}
         </div>
       }
     </div >

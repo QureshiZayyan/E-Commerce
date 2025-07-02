@@ -13,10 +13,11 @@ function StateProvider({ children }) {
     const [user, setUser] = useState(null);
     const [userAddress, setUserAddress] = useState([]);
     const [showOrders, setShowOrders] = useState([]);
-    const [selectedItem, setSelectedItem] = useState(null);
+    const [selectedItem, setSelectedItem] = useState();
     const [quantity, setQuantity] = useState(1);
     const [totalPrice, setTotalPrice] = useState(0);
     const [userProfile, setUserProfile] = useState(false);
+    const [checkedItems, setCheckedItems] = useState([]);
 
     const truncateText = (text, maxLength) => {
         if (!text) return "";
@@ -67,7 +68,7 @@ function StateProvider({ children }) {
     }, []);
 
     useEffect(() => {
-        if (cart.length > 0) {
+        if (cart && cart.length > 0) {
             localStorage.setItem("cartItems", JSON.stringify(cart));
         }
     }, [cart]);
@@ -84,10 +85,10 @@ function StateProvider({ children }) {
         const check = cart.some(item => item.id === product.id);
         if (check) return;
 
-        // const updatedCart = [...cart, product];
-        // setCart(updatedCart);
+        const updatedCart = [...cart, { ...product, checked: true }];
+        setCart(updatedCart);
 
-        setCart(prev => [...prev, { ...product, checked: false }]);
+        // setCart(prev => [...prev, { ...product, checked: false }]);
 
     }
 
@@ -103,8 +104,6 @@ function StateProvider({ children }) {
         }));
         setUserAddress(UserData);
         setUserProfile(true);
-        console.log(UserData);
-
     };
 
     const FetchUserOrders = async () => {
@@ -136,7 +135,7 @@ function StateProvider({ children }) {
         <StateContext.Provider value={{
             FetchUserAddress, setProducts, products, user, setUser, cart, setCart, addToCart, userAddress, setUserAddress,
             placeSingleItemOrder, showOrders, setShowOrders, selectedItem, setSelectedItem, setQuantity, quantity, setTotalPrice, totalPrice,
-            truncateText, userProfile, setUserProfile
+            truncateText, userProfile, setUserProfile, checkedItems, setCheckedItems
         }}>
             {children}
         </StateContext.Provider>

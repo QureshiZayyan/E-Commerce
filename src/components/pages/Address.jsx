@@ -67,42 +67,36 @@ const Address = () => {
                         placeholder="Full Name"
                         className="w-full mb-2 p-2 border rounded"
                         onChange={handleChange}
-                        required
                     />
                     <input
                         name="street"
                         placeholder="Street"
                         className="w-full mb-2 p-2 border rounded"
                         onChange={handleChange}
-                        required
                     />
                     <input
                         name="city"
                         placeholder="City"
                         className="w-full mb-2 p-2 border rounded"
                         onChange={handleChange}
-                        required
                     />
                     <input
                         name="state"
                         placeholder="State"
                         className="w-full mb-2 p-2 border rounded"
                         onChange={handleChange}
-                        required
                     />
                     <input
                         name="zip"
                         placeholder="ZIP Code"
                         className="w-full mb-2 p-2 border rounded"
                         onChange={handleChange}
-                        required
                     />
                     <input
                         name="country"
                         placeholder="Country"
                         className="w-full mb-4 p-2 border rounded"
                         onChange={handleChange}
-                        required
                     />
 
                     <div className="flex justify-between font-semibold">
