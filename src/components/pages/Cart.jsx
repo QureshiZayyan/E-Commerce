@@ -6,7 +6,19 @@ import { useNavigate, Link } from 'react-router-dom';
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { cart, user, setCart, quantity, setQuantity, checkedItems, setCheckedItems } = useContext(StateContext);
+  const { cart, user, setCart, quantity, setQuantity, checkedItems, setCheckedItems, selectedItem, setSelectedItem } = useContext(StateContext);
+
+  let loginAlert = () => {
+    return toast.info("Please login to place the order.", {
+      position: 'top-center',
+      bodyClassName: 'txt',
+      autoClose: 2000,
+      hideProgressBar: true,
+      theme: 'light',
+      closeOnClick: true,
+      transition: Zoom,
+    });
+  }
 
   const removeFromCart = (productId) => {
     const updatedCart = cart.filter(item => item.id !== productId);
@@ -41,18 +53,12 @@ const Cart = () => {
 
   const handleBuyNow = (product) => {
     if (!user) {
-      toast.info("Please login to place the order.", {
-        position: 'top-center',
-        bodyClassName: 'txt',
-        autoClose: 2000,
-        hideProgressBar: true,
-        theme: 'light',
-        closeOnClick: true,
-        transition: Zoom,
-      });
+      loginAlert();
       return;
     }
-    navigate(checkedItems.length > 0 ? '/checkout' : `/item/${product.id}`);
+
+    navigate(`/item/${product.id}`);
+
   };
 
   const allSelected = cart.every(item => item.checked);
@@ -65,6 +71,15 @@ const Cart = () => {
       console.log("Checked Items =", filteredCheckedItems);
     }
   }, [cart])
+
+  const proceedCheckout = () => {
+
+    setSelectedItem(null);
+    return (
+      <Link to={'/checkout'} className='text-[14px] font-semibold mx-2 bg-[#172554] text-white mt-3 py-[6px] px-[10.2px] rounded-2xl'>
+        Proceed to Buy
+      </Link>)
+  }
 
   return (
     <div id='cart-container' className="my-10">
@@ -134,7 +149,13 @@ const Cart = () => {
               </li>
             ))}
           </ul>
-          {checkedItems.length > 0 && <Link to={'/checkout'} className='text-[14px] font-semibold mx-2 bg-[#172554] text-white mt-3 py-[6px] px-[10.2px] rounded-2xl'>Proceed to Buy</Link>}
+          {checkedItems.length > 0 &&
+            // <Link to={'/checkout'} className='text-[14px] font-semibold mx-2 bg-[#172554] text-white mt-3 py-[6px] px-[10.2px] rounded-2xl'>
+            //   Proceed to Buy
+            // </Link>}
+
+            proceedCheckout()
+          }
         </div>
       }
     </div >

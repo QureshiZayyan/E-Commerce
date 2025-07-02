@@ -5,7 +5,7 @@ import { MdCurrencyRupee } from "react-icons/md";
 import { useParams } from 'react-router-dom';
 
 const CheckoutPage = () => {
-    const { placeSingleItemOrder, cart, products, truncateText, selectedItem, setSelectedItem, totalPrice, quantity, userAddress, checkedItems } = useContext(StateContext);
+    const { placeSingleItemOrder, products, truncateText, selectedItem, setSelectedItem, totalPrice, quantity, userAddress, checkedItems } = useContext(StateContext);
     const { id } = useParams();
 
     useEffect(() => {
@@ -51,9 +51,9 @@ const CheckoutPage = () => {
                     </li>
                     :
                     checkedItems.map((product) => (
-                        <div key={product.id} className="flex items-center pt-4 pb-8 border-b border-[#172554] gap-9 mb-9">
+                        <li key={product.id} className="flex items-center pt-4 pb-8 border-b border-[#172554] gap-9 mb-9">
                             <img
-                                src={product.items.image}
+                                src={product.image}
                                 alt="Product"
                                 className="w-[22vw] h-[140px]"
                             />
@@ -61,7 +61,7 @@ const CheckoutPage = () => {
                                 <h2 className="text-lg font-semibold mb-2">{product.title}</h2>
                                 <p className="text-md mb-2">{truncateText(product.description, 80)}</p>
                             </div>
-                        </div>
+                        </li>
                     ))
                 }
             </ul>
