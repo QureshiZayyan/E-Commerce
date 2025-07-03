@@ -147,7 +147,7 @@ input[type="checkbox"] {
     margin-bottom: 20px !important;
   }
 
-  #Checkout {
+  .Checkout {
     flex-direction: column;
     align-items: center;
     /* justify-content: center; */

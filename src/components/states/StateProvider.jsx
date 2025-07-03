@@ -16,6 +16,7 @@ function StateProvider({ children }) {
     const [selectedItem, setSelectedItem] = useState();
     const [quantity, setQuantity] = useState(1);
     const [totalPrice, setTotalPrice] = useState(0);
+    const [allItemsTotalPrice, setallItemsTotalPrice] = useState(0);
     const [userProfile, setUserProfile] = useState(false);
     const [checkedItems, setCheckedItems] = useState([]);
 
@@ -25,13 +26,12 @@ function StateProvider({ children }) {
         return text.substring(0, maxLength) + "...";
     };
 
-    const placeSingleItemOrder = async (itemId) => {
+    const placeOrders = async (itemId) => {
 
         const orderData = {
             userId: user.uid,
-            items: selectedItem,
-            // items: cart,
-            // total: selectedItem.price,
+            items: selectedItem || checkedItems,
+            // total: selectedItem.price || allItemsTotalPrice,
             userAddress,
         };
 
@@ -85,11 +85,9 @@ function StateProvider({ children }) {
         const check = cart.some(item => item.id === product.id);
         if (check) return;
 
-        const updatedCart = [...cart, { ...product, checked: true }];
+        const updatedCart = [...cart, { ...product, checked: true, quantity: 3 }];
         setCart(updatedCart);
-
         // setCart(prev => [...prev, { ...product, checked: false }]);
-
     }
 
     const FetchUserAddress = async () => {
@@ -134,7 +132,7 @@ function StateProvider({ children }) {
     return (
         <StateContext.Provider value={{
             FetchUserAddress, setProducts, products, user, setUser, cart, setCart, addToCart, userAddress, setUserAddress,
-            placeSingleItemOrder, showOrders, setShowOrders, selectedItem, setSelectedItem, setQuantity, quantity, setTotalPrice, totalPrice,
+            placeOrders, showOrders, setShowOrders, selectedItem, setSelectedItem, setQuantity, quantity, setTotalPrice, totalPrice,
             truncateText, userProfile, setUserProfile, checkedItems, setCheckedItems
         }}>
             {children}

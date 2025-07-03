@@ -51,13 +51,23 @@ const Cart = () => {
     );
   };
 
-  const handleBuyNow = (product) => {
+  const handleBuyNowforSingleItem = (product) => {
     if (!user) {
       loginAlert();
       return;
     }
 
     navigate(`/item/${product.id}`);
+
+  };
+
+  const handleBuyNowforMultipleItems = () => {
+    if (!user) {
+      loginAlert();
+      return;
+    }
+
+    navigate(`/checkout`);
 
   };
 
@@ -69,17 +79,17 @@ const Cart = () => {
       const filteredCheckedItems = cart.filter(item => item.checked);
       setCheckedItems(filteredCheckedItems);
       console.log("Checked Items =", filteredCheckedItems);
+      console.log("Cart =", cart);
     }
   }, [cart])
 
-  const proceedCheckout = () => {
-
-    setSelectedItem(null);
-    return (
-      <Link to={'/checkout'} className='text-[14px] font-semibold mx-2 bg-[#172554] text-white mt-3 py-[6px] px-[10.2px] rounded-2xl'>
-        Proceed to Buy
-      </Link>)
-  }
+  const updateQuantity = (id, newQuantity) => {
+    setCart(prev =>
+      prev.map(item =>
+        item.id === id ? { ...item, quantity: newQuantity } : item
+      )
+    );
+  };
 
   return (
     <div id='cart-container' className="my-10">
@@ -111,7 +121,7 @@ const Cart = () => {
                   />
                 </Link>
 
-                <div>
+                <div className='ml-4'>
                   <Link to={`/product/${item.id}`}>
                     <h2 className="text-lg font-semibold">{item.title}</h2>
                     <p className="flex items-center my-2 text-[20.5px] text-black">
@@ -120,8 +130,18 @@ const Cart = () => {
                     </p>
                   </Link>
 
-                  <div className="flex items-center gap-4 mt-4">
+                  {/* {selectedItem ? (<div className="flex items-center gap-4 mt-4">
                     <select className='bg-slate-200 py-2 h-[40px] w-[45px] px-1 rounded-md' value={quantity} onChange={handleQuantityChange}>
+                      {[1, 2, 3, 4, 5].map(qty => (
+                        <option key={qty} value={qty}>
+                          {qty}
+                        </option>
+                      ))}
+                    </select>
+                  </div>)
+                    : */}
+                  <div className="flex items-center gap-4 mt-4">
+                    <select className='bg-slate-200 py-2 h-[40px] w-[45px] px-1 rounded-md' value={item.quantity} onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}>
                       {[1, 2, 3, 4, 5].map(qty => (
                         <option key={qty} value={qty}>
                           {qty}
@@ -132,15 +152,15 @@ const Cart = () => {
 
                   <div className='mt-3'>
                     <button
-                      onClick={() => handleBuyNow(item)}
-                      className="text-[13px] font-semibold bg-[#172554] text-white mt-3 py-[6px] px-[10.2px] rounded-2xl"
+                      onClick={() => handleBuyNowforSingleItem(item)}
+                      className="text-[13.5px] font-semibold bg-[#172554] text-white mt-3 py-[6px] px-[10.2px] rounded-2xl"
                     >
                       Buy Now
                     </button>
 
                     <button
                       onClick={() => removeFromCart(item.id)}
-                      className="text-[13px] font-semibold mx-2 bg-black text-white mt-3 py-[6px] px-[10.2px] rounded-2xl"
+                      className="text-[13.5px] font-semibold mx-2 bg-black text-white mt-3 py-[6px] px-[10.2px] rounded-2xl"
                     >
                       Remove
                     </button>
@@ -150,11 +170,11 @@ const Cart = () => {
             ))}
           </ul>
           {checkedItems.length > 0 &&
-            // <Link to={'/checkout'} className='text-[14px] font-semibold mx-2 bg-[#172554] text-white mt-3 py-[6px] px-[10.2px] rounded-2xl'>
-            //   Proceed to Buy
-            // </Link>}
-
-            proceedCheckout()
+            (
+              <button onClick={handleBuyNowforMultipleItems} className="text-[14px] font-semibold mx-2 bg-[#172554] text-white mt-3 py-[6px] px-[10.2px] rounded-2xl">
+                Proceed to Buy
+              </button>
+            )
           }
         </div>
       }
