@@ -21,6 +21,7 @@ const Button = ({ addToCart, product }) => {
             });
             return;
         }
+        addToCart(product)
         navigate(`/item/${product.id}`);
     };
 

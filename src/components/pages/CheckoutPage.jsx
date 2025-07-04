@@ -3,9 +3,10 @@ import React, { useContext, useEffect } from 'react';
 import { StateContext } from '../states/StateProvider';
 import { MdCurrencyRupee } from "react-icons/md";
 import { useParams } from 'react-router-dom';
+import { TbLayoutAlignCenter } from 'react-icons/tb';
 
 const CheckoutPage = () => {
-    const { placeOrders, products, truncateText, cart, selectedItem, setSelectedItem, userAddress, checkedItems } = useContext(StateContext);
+    const { placeOrders, cart, selectedItem, setSelectedItem, userAddress, checkedItems, totalPrice,  totalIems  } = useContext(StateContext);
     const { id } = useParams();
 
     useEffect(() => {
@@ -18,10 +19,11 @@ const CheckoutPage = () => {
         } else {
             setSelectedItem(null)
         }
+
     }, [id]);
 
-    const total = checkedItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    const totalIems = checkedItems.reduce((sum, item) => sum + item.quantity, 0);
+    // const totalPrice = checkedItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    // const totalIems = checkedItems.reduce((sum, item) => sum + item.quantity, 0);
 
     return (
         <div id='Checkout-Container' className="my-10 mx-auto py-8 w-[85vw] bg-white rounded-lg px-10 shadow-md">
@@ -53,10 +55,6 @@ const CheckoutPage = () => {
                             />
                             <div className='ml-4'>
                                 <h2 className="text-lg font-semibold mb-2">{product.title}</h2>
-                                {/* <p className="text-md mb-2">{truncateText(product.description, 80)}</p> */}
-                                {/* <p className="flex items-center text-[18px] text-black">
-                                    (Quantity {quantity}):  <MdCurrencyRupee /><span className='font-semibold'>{totalPrice.toFixed(2)}</span>
-                                </p> */}
                                 <p className="flex items-center text-[18px] text-black">
                                     Quantity : {product.quantity} X <MdCurrencyRupee className="ml-2" />
                                     <span className='font-semibold'>{(product.price).toFixed(2)}</span>
@@ -66,11 +64,11 @@ const CheckoutPage = () => {
                     ))
                 }
 
-                {/* {selectedItem ?
-                    (<p className='text-[18px] flex items-center mb-5'>Subtotal ({totalIems} Items) : <span className='font-semibold flex items-center'><MdCurrencyRupee className="ml-2" />{total}</span></p>)
+                {selectedItem ?
+                    (<p className='text-[18px] flex items-center mb-5'>Subtotal ({selectedItem.quantity} Items) : <span className='font-semibold flex items-center'><MdCurrencyRupee className="ml-2" />{selectedItem.price * selectedItem.quantity}</span></p>)
                     :
-                    (<p className='text-[18px] flex items-center mb-5'>Subtotal ({selectedItem.quantity} Items) : <span className='font-semibold flex items-center'><MdCurrencyRupee className="ml-2" /></span></p>)
-                } */}
+                    (<p className='text-[18px] flex items-center mb-5'>Subtotal ({totalIems} Items) : <span className='font-semibold flex items-center'><MdCurrencyRupee className="ml-2" />{totalPrice}</span></p>)
+                }
 
                 {selectedItem ? (<button
                     onClick={() => placeOrders(selectedItem)}

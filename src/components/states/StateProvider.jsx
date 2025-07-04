@@ -14,11 +14,13 @@ function StateProvider({ children }) {
     const [userAddress, setUserAddress] = useState([]);
     const [showOrders, setShowOrders] = useState([]);
     const [selectedItem, setSelectedItem] = useState();
-    const [quantity, setQuantity] = useState(1);
-    const [totalPrice, setTotalPrice] = useState(0);
-    const [allItemsTotalPrice, setallItemsTotalPrice] = useState(0);
+    // const [totalPrice, setTotalPrice] = useState(0);
+    // const [allItemsTotalPrice, setallItemsTotalPrice] = useState(0);
+    // const [allItemsTotalPrice, setallItemsTotalPrice] = useState(0);
     const [userProfile, setUserProfile] = useState(false);
     const [checkedItems, setCheckedItems] = useState([]);
+    const totalPrice = checkedItems?.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const totalItems = checkedItems?.reduce((sum, item) => sum + item.quantity, 0);
 
     const truncateText = (text, maxLength) => {
         if (!text) return "";
@@ -31,7 +33,8 @@ function StateProvider({ children }) {
         const orderData = {
             userId: user.uid,
             items: selectedItem || checkedItems,
-            // total: selectedItem.price || allItemsTotalPrice,
+            PriceTotal: selectedItem?.price * selectedItem?.quantity || totalPrice,
+            quantity: selectedItem?.quantity || totalItems,
             userAddress,
         };
 
@@ -62,15 +65,13 @@ function StateProvider({ children }) {
 
     useEffect(() => {
         const saved = localStorage.getItem("cartItems");
-        // if (saved) {
-        setCart(JSON.parse(saved));
-        // }
+        if (saved) {
+            setCart(JSON.parse(saved));
+        }
     }, []);
 
     useEffect(() => {
-        if (cart && cart.length > 0) {
-            localStorage.setItem("cartItems", JSON.stringify(cart));
-        }
+        localStorage.setItem("cartItems", JSON.stringify(cart));
     }, [cart]);
 
     useEffect(() => {
@@ -85,7 +86,7 @@ function StateProvider({ children }) {
         const check = cart.some(item => item.id === product.id);
         if (check) return;
 
-        const updatedCart = [...cart, { ...product, checked: true, quantity: 3 }];
+        const updatedCart = [...cart, { ...product, checked: true, quantity: 1 }];
         setCart(updatedCart);
         // setCart(prev => [...prev, { ...product, checked: false }]);
     }
@@ -132,7 +133,7 @@ function StateProvider({ children }) {
     return (
         <StateContext.Provider value={{
             FetchUserAddress, setProducts, products, user, setUser, cart, setCart, addToCart, userAddress, setUserAddress,
-            placeOrders, showOrders, setShowOrders, selectedItem, setSelectedItem, setQuantity, quantity, setTotalPrice, totalPrice,
+            placeOrders, showOrders, setShowOrders, selectedItem, setSelectedItem, totalPrice, totalItems,
             truncateText, userProfile, setUserProfile, checkedItems, setCheckedItems
         }}>
             {children}

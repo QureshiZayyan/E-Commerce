@@ -8,7 +8,7 @@ import { RiDropdownList } from 'react-icons/ri';
 
 const ProductDetailPage = () => {
 
-    const { products, addToCart, setCart, cart, setProducts } = useContext(StateContext);
+    const { products, addToCart, setCart, cart } = useContext(StateContext);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [dropdownValue, setDropdownValue] = useState(null);
     const { id } = useParams();
@@ -24,8 +24,6 @@ const ProductDetailPage = () => {
             const foundProduct = products.find((item) => item.id === parseInt(id));
             const cartvalue = cart.find((item) => item.id === parseInt(id));
             if (cartvalue) { setDropdownValue(cartvalue.quantity) }
-            // console.log('cartvalye', cartvalue.quantity);
-
 
             if (foundProduct) {
                 setSelectedProduct({ ...foundProduct, quantity: 1 });

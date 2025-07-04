@@ -6,7 +6,7 @@ import { useNavigate, Link } from 'react-router-dom';
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { cart, user, setCart, quantity, setQuantity, checkedItems, setCheckedItems, selectedItem, setSelectedItem } = useContext(StateContext);
+  const { cart, user, setCart, checkedItems, setCheckedItems } = useContext(StateContext);
 
   let loginAlert = () => {
     return toast.info("Please login to place the order.", {
@@ -24,11 +24,6 @@ const Cart = () => {
     const updatedCart = cart.filter(item => item.id !== productId);
     setCart(updatedCart);
   }
-
-  const handleQuantityChange = (e) => {
-    const qty = parseInt(e.target.value);
-    setQuantity(qty);
-  };
 
   const toggleAll = (checked) => {
     setCart(prev =>
@@ -74,12 +69,9 @@ const Cart = () => {
   const allSelected = cart.every(item => item.checked);
 
   useEffect(() => {
-
     if (cart.length > 0) {
       const filteredCheckedItems = cart.filter(item => item.checked);
       setCheckedItems(filteredCheckedItems);
-      console.log("Checked Items =", filteredCheckedItems);
-      console.log("Cart =", cart);
     }
   }, [cart])
 
