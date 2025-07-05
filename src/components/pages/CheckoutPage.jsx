@@ -1,12 +1,10 @@
-
 import React, { useContext, useEffect } from 'react';
 import { StateContext } from '../states/StateProvider';
 import { MdCurrencyRupee } from "react-icons/md";
-import { useParams } from 'react-router-dom';
-import { TbLayoutAlignCenter } from 'react-icons/tb';
+import { useParams } from 'react-router-dom'
 
 const CheckoutPage = () => {
-    const { placeOrders, cart, selectedItem, setSelectedItem, userAddress, checkedItems, totalPrice,  totalIems  } = useContext(StateContext);
+    const { placeOrders, cart, selectedItem, setSelectedItem, userAddress, checkedItems, totalPrice, totalItems } = useContext(StateContext);
     const { id } = useParams();
 
     useEffect(() => {
@@ -67,7 +65,7 @@ const CheckoutPage = () => {
                 {selectedItem ?
                     (<p className='text-[18px] flex items-center mb-5'>Subtotal ({selectedItem.quantity} Items) : <span className='font-semibold flex items-center'><MdCurrencyRupee className="ml-2" />{selectedItem.price * selectedItem.quantity}</span></p>)
                     :
-                    (<p className='text-[18px] flex items-center mb-5'>Subtotal ({totalIems} Items) : <span className='font-semibold flex items-center'><MdCurrencyRupee className="ml-2" />{totalPrice}</span></p>)
+                    (<p className='text-[18px] flex items-center mb-5'>Subtotal ({totalItems} Items) : <span className='font-semibold flex items-center'><MdCurrencyRupee className="ml-2" />{totalPrice}</span></p>)
                 }
 
                 {selectedItem ? (<button

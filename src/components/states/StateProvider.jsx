@@ -8,19 +8,16 @@ const StateContext = createContext();
 
 function StateProvider({ children }) {
 
-    const [products, setProducts] = useState([]);
+    const [allProducts, setAllProducts] = useState([]);
     const [cart, setCart] = useState([]);
     const [user, setUser] = useState(null);
     const [userAddress, setUserAddress] = useState([]);
     const [showOrders, setShowOrders] = useState([]);
     const [selectedItem, setSelectedItem] = useState();
-    // const [totalPrice, setTotalPrice] = useState(0);
-    // const [allItemsTotalPrice, setallItemsTotalPrice] = useState(0);
-    // const [allItemsTotalPrice, setallItemsTotalPrice] = useState(0);
     const [userProfile, setUserProfile] = useState(false);
     const [checkedItems, setCheckedItems] = useState([]);
-    const totalPrice = checkedItems?.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    const totalItems = checkedItems?.reduce((sum, item) => sum + item.quantity, 0);
+    const totalPrice = checkedItems.length > 0 && checkedItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const totalItems = checkedItems.length > 0 && checkedItems.reduce((sum, item) => sum + item.quantity, 0);
 
     const truncateText = (text, maxLength) => {
         if (!text) return "";
@@ -116,7 +113,7 @@ function StateProvider({ children }) {
             ...doc.data()
         }));
         setShowOrders(Orders);
-        console.log(Orders);
+        // console.log(Orders);
     };
 
     useEffect(() => {
@@ -132,7 +129,7 @@ function StateProvider({ children }) {
 
     return (
         <StateContext.Provider value={{
-            FetchUserAddress, setProducts, products, user, setUser, cart, setCart, addToCart, userAddress, setUserAddress,
+            FetchUserAddress, setAllProducts, allProducts, user, setUser, cart, setCart, addToCart, userAddress, setUserAddress,
             placeOrders, showOrders, setShowOrders, selectedItem, setSelectedItem, totalPrice, totalItems,
             truncateText, userProfile, setUserProfile, checkedItems, setCheckedItems
         }}>

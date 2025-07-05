@@ -4,11 +4,10 @@ import { MdCurrencyRupee } from "react-icons/md";
 import { MdStarRate } from "react-icons/md";
 import Button from '../layout/Button';
 import { StateContext } from '../states/StateProvider';
-import { RiDropdownList } from 'react-icons/ri';
 
 const ProductDetailPage = () => {
 
-    const { products, addToCart, setCart, cart } = useContext(StateContext);
+    const { allProducts, addToCart, setCart, cart } = useContext(StateContext);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [dropdownValue, setDropdownValue] = useState(null);
     const { id } = useParams();
@@ -20,8 +19,8 @@ const ProductDetailPage = () => {
 
     // let cartvalue;
     useEffect(() => {
-        if (products) {
-            const foundProduct = products.find((item) => item.id === parseInt(id));
+        if (allProducts) {
+            const foundProduct = allProducts.find((item) => item.id === parseInt(id));
             const cartvalue = cart.find((item) => item.id === parseInt(id));
             if (cartvalue) { setDropdownValue(cartvalue.quantity) }
 
@@ -44,12 +43,6 @@ const ProductDetailPage = () => {
         );
         setDropdownValue(newQuantity)
     };
-
-    // useEffect(() => {
-    //     if (selectedProduct || selectedItem) {
-    //         setTotalPrice(selectedProduct.price * quantity);
-    //     }
-    // }, [selectedProduct, quantity, selectedItem]);
 
     if (!selectedProduct) {
         return <p>Blog not found</p>;

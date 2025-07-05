@@ -72,6 +72,8 @@ const Cart = () => {
     if (cart.length > 0) {
       const filteredCheckedItems = cart.filter(item => item.checked);
       setCheckedItems(filteredCheckedItems);
+      console.log(checkedItems);
+
     }
   }, [cart])
 
