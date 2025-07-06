@@ -5,12 +5,12 @@ import { StateContext } from "../states/StateProvider";
 import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
-  const { user, cart, products, setAllProducts, setDropDown } = useContext(StateContext);
+  const { user, cart} = useContext(StateContext);
   const navigate = useNavigate();
 
   const resetProducts = () => {
-    setAllProducts(products);
-    setDropDown('All');
+    // setAllProducts(products);
+    // setDropDown('All');
     navigate('/');
     window.scrollTo({ top: 0 });
   };

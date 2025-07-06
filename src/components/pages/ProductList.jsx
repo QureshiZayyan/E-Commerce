@@ -5,7 +5,10 @@ import { StateContext } from "../states/StateProvider";
 import Loader from "../layout/Loader";
 
 const ProductList = () => {
-  const { allProducts, setAllProducts, addToCart, truncateText, cart, setProducts, products, dropDown, setDropDown } = useContext(StateContext);
+  const { allProducts, setAllProducts, addToCart, truncateText, cart, setProducts, products } = useContext(StateContext);
+
+  const [dropdownValue, setdropdownValue] = useState('');
+  const [selectedValue, setSelectedValue] = useState('');
 
   const FetchData = async () => {
     try {
@@ -14,6 +17,9 @@ const ProductList = () => {
       const data = await response.json();
       setProducts(data);
       setAllProducts(data);
+      const categories = Array.from(new Set(data.map((e) => e.category)));
+      const update = ['All', ...categories]
+      setdropdownValue(update);
     } catch (error) {
       console.log(error);
     }
@@ -26,13 +32,16 @@ const ProductList = () => {
   useEffect(() => {
     if (products.length === 0) return;
 
-    if (dropDown === 'All') {
+    // const filtered = products.filter(item => item.category === selectedValue);
+    // setAllProducts(filtered);
+
+    if (selectedValue === 'All') {
       setAllProducts(products);
     } else {
-      const filtered = products.filter(item => item.category === dropDown);
+      const filtered = products.filter(item => item.category === selectedValue);
       setAllProducts(filtered);
     }
-  }, [dropDown]);
+  }, [selectedValue]);
 
   return (
     <div id="Product-List-Container">
@@ -42,11 +51,9 @@ const ProductList = () => {
             <div id="select-parent" className="flex items-center mx-14 gap-4 mt-7 font-semibold">
               Sort By Category
               <select
-                className="bg-slate-200 border border-[#172554] rounded-2xl px-2 py-2 focus:outline-none"
-                onChange={(e) => setDropDown(e.target.value)}
-                value={dropDown}
-              >
-                {['All', `men's clothing`, `women's clothing`, 'electronics'].map(qty => (
+                className="bg-slate-200 border-[1.5px] border-[#172554] rounded-2xl px-2 py-2 focus:outline-none"
+                onChange={(e) => setSelectedValue(e.target.value)} >
+                {dropdownValue && dropdownValue.map((qty) => (
                   <option key={qty} value={qty}>
                     {qty}
                   </option>

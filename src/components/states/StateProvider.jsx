@@ -132,7 +132,7 @@ function StateProvider({ children }) {
     return (
         <StateContext.Provider value={{
             FetchUserAddress, setAllProducts, allProducts, user, setUser, cart, setCart, addToCart, userAddress, setUserAddress,
-            placeOrders, showOrders, setShowOrders, selectedItem, setSelectedItem, totalPrice, totalItems,dropDown, setDropDown,
+            placeOrders, showOrders, setShowOrders, selectedItem, setSelectedItem, totalPrice, totalItems, dropDown, setDropDown,
             truncateText, userProfile, setUserProfile, checkedItems, setCheckedItems, setProducts, products
         }}>
             {children}
