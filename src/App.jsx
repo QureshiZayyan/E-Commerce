@@ -1,12 +1,10 @@
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Suspense, lazy, useContext } from 'react';
+import { Suspense, lazy } from 'react';
 import Navbar from './components/layout/Navbar';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from './components/layout/Loader';
-import { StateContext } from './components/states/StateProvider';
-
 
 const ProductList = lazy(() => import('./components/pages/ProductList'));
 const ProductDetailPage = lazy(() => import('./components/pages/ProductDetailPage'));
@@ -18,7 +16,6 @@ const Address = lazy(() => import('./components/pages/Address'));
 const OrderPage = lazy(() => import('./components/pages/OrderPage'));
 
 export const App = () => {
-  const { checkedItems } = useContext(StateContext);
 
   return (
     <>

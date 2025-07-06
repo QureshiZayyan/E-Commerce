@@ -1,16 +1,24 @@
-import { ShoppingCart, User } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import { useContext } from "react";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { StateContext } from "../states/StateProvider";
 import { FaUser } from "react-icons/fa";
 
 const Navbar = () => {
-  const { user, cart } = useContext(StateContext);
+  const { user, cart, products, setAllProducts, setDropDown } = useContext(StateContext);
+  const navigate = useNavigate();
+
+  const resetProducts = () => {
+    setAllProducts(products);
+    setDropDown('All');
+    navigate('/');
+    window.scrollTo({ top: 0 });
+  };
 
   return (
-    <nav className="bg-blue-950 shadow-md py-4 md:px-14 flex items-center justify-between sticky top-0 z-30">
+    <nav className="bg-blue-950 shadow-md py-4 px-10 md:px-14 flex items-center justify-between sticky top-0 z-30">
       {/* Left: Logo */}
-      <NavLink to='/' className="text-xl font-bold text-white">ShopKart</NavLink>
+      <div onClick={resetProducts} className="cursor-pointer text-xl font-bold text-white">ShopKart</div>
 
       {/* Right: Cart + User */}
       <div className="flex items-center gap-6 relative">
