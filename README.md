@@ -25,10 +25,12 @@ Welcome to **ShopKart**, a fully responsive eCommerce web application built usin
 ## 🚀 Tech Stack
 
 <div>
-  Front-End : <img src="https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react" />
+  <p class='flex items-center'>Front-End : <img src="https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react" /></p>
   <br/>
-  Backend : <img src="https://img.shields.io/badge/Firebase-yellow?style=for-the-badge&logo=firebase" />
+  <p class='flex items-center'>Backend : <img src="https://img.shields.io/badge/Firebase-yellow?style=for-the-badge&logo=firebase" /></p>
 </div>
+
+---
 
 ## 🔧 Installation
 
