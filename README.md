@@ -16,20 +16,18 @@ Welcome to **ShopKart**, a fully responsive eCommerce web application built usin
 
 ---
 
-## 📸 Demo
+## 📌 Demo
 
-> 🔗 Live Demo: [https://your-live-site.com](https://your-live-site.com)  
-> 📽️ Demo Video: [Watch here](https://your-demo-video-link.com)
-
-![App Preview](https://your-screenshot-link.com)
+> 🔗 Live : (https://e-commerceee.vercel.app/)  
 
 ---
 
 ## 🚀 Tech Stack
 
-<div align="center">
-  <img src="https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react" />
-  <img src="https://img.shields.io/badge/Firebase-yellow?style=for-the-badge&logo=firebase" />
+<div>
+  Front-End : <img src="https://img.shields.io/badge/React-18-blue?style=for-the-badge&logo=react" />
+  <br/>
+  Backend : <img src="https://img.shields.io/badge/Firebase-yellow?style=for-the-badge&logo=firebase" />
 </div>
 
 ## 🔧 Installation
@@ -38,4 +36,4 @@ Welcome to **ShopKart**, a fully responsive eCommerce web application built usin
 git clone https://github.com/yourusername/shopkart.git
 cd shopkart
 npm install
-npm run dev   # or npm start
+npm run dev
