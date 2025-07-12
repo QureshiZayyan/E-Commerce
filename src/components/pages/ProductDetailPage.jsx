@@ -9,7 +9,7 @@ const ProductDetailPage = () => {
 
     const { allProducts, addToCart, setCart, cart } = useContext(StateContext);
     const [selectedProduct, setSelectedProduct] = useState(null);
-    const [dropdownValue, setDropdownValue] = useState(null);
+    const [dropdownValue, setDropdownValue] = useState('');
     const { id } = useParams();
 
     // const handleQuantityChange = (e) => {
@@ -28,11 +28,6 @@ const ProductDetailPage = () => {
                 setSelectedProduct({ ...foundProduct, quantity: 1 });
             }
         }
-    }, [id])
-
-    useEffect(() => {
-        // console.log(cart);
-        console.log(selectedProduct);
     }, [id])
 
     const updateQuantity = (id, newQuantity) => {

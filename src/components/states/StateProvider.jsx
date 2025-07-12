@@ -115,7 +115,6 @@ function StateProvider({ children }) {
             ...doc.data()
         }));
         setShowOrders(Orders);
-        // console.log(Orders);
     };
 
     useEffect(() => {
