@@ -1,6 +1,6 @@
 # 🛍️ ShopKart — E-Commerce Web App Built with React + Firebase
 
-Welcome to **ShopKart**, a fully responsive eCommerce web application built using **React** and **Firebase**. Users can browse products, add them to their cart, and experience a seamless shopping experience with authentication and data storage powered by Firebase.
+Welcome to **ShopKart**, a fully responsive eCommerce web application.Users can browse products, add them to their cart, and experience a seamless shopping experience with authentication and data storage powered by Firebase.
 
 ---
 
